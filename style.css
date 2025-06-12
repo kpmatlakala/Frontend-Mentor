@@ -1,0 +1,137 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables for color palette */
+:root {
+    --white: hsl(0, 0%, 100%);
+    --stone-100: hsl(30, 54%, 90%);
+    --stone-150: hsl(30, 18%, 87%);
+    --stone-600: hsl(30, 10%, 34%);
+    --stone-900: hsl(24, 5%, 18%);
+    --brown-800: hsl(14, 45%, 36%);
+    --rose-800: hsl(332, 51%, 32%);
+    --rose-50: hsl(330, 100%, 98%);
+}
+
+/* Base styles */
+body {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    background-color: var(--stone-100);
+    color: var(--stone-600);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-card {
+    padding: 1.25rem;
+    background-color: var(--white);
+    max-width: 736px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+.content {
+    padding: 2rem;
+}
+
+h1 {
+    font-family: 'Young Serif', serif;
+    font-size: 2.5rem;
+    color: var(--stone-900);
+    margin-bottom: 1rem;
+}
+
+.description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.prep-time {
+    background-color: var(--rose-50);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.prep-time h2 {
+    color: var(--rose-800);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.prep-time ul {
+    list-style: disc inside;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    font-family: 'Young Serif', serif;
+    color: var(--brown-800);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+ul,
+ol {
+    padding-left: 1.5rem;
+    line-height: 1.8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+td {
+    border-bottom: 1px solid var(--stone-150);
+    padding: 0.75rem 0;
+}
+
+td:first-child {
+    color: var(--stone-600);
+}
+
+td:last-child {
+    color: var(--brown-800);
+    font-weight: 700;
+    text-align: right;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    .content {
+        padding: 1.25rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .section h2,
+    .prep-time h2 {
+        font-size: 1.5rem;
+    }
+}
