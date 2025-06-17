@@ -1,0 +1,93 @@
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid placement rules */
+.card.purple {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.card.dark-blue {
+  grid-column: 3 / span 2;
+  grid-row: 1;
+}
+
+.card.white:not(.large) {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+}
+
+.card.dark {
+  grid-column: 3 / span 2;
+  grid-row: 2;
+}
+
+.card.large {
+  grid-column: 5;
+  grid-row: 1 / span 2;
+}
+
+/* Optional: color themes */
+.purple {
+  background-color: hsl(263, 55%, 52%);
+  color: white;
+}
+
+.dark-blue {
+  background-color: hsl(217, 19%, 35%);
+  color: white;
+}
+
+.dark {
+  background-color: hsl(219, 29%, 14%);
+  color: white;
+}
+
+.white {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(217, 19%, 35%);
+}
+
+/* Profile block styles */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.quote {
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Responsive fallback for smaller screens */
+@media (max-width: 768px) {
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}

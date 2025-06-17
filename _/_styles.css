@@ -1,0 +1,115 @@
+:root {
+  --purple: hsl(263, 55%, 52%);
+  --dark-blue: hsl(217, 19%, 35%);
+  --dark: hsl(219, 29%, 14%);
+  --white: hsl(0, 0%, 100%);
+  --light-gray: hsl(0, 0%, 81%);
+  --grayish-blue: hsl(210, 46%, 95%);
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--grayish-blue);
+}
+
+.testimonials {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  padding: 2rem;
+  border-radius: 12px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card.white {
+  background: var(--white);
+  color: var(--dark-blue);
+}
+
+.card.purple {
+  background: var(--purple);
+}
+
+.card.dark-blue {
+  background: var(--dark-blue);
+}
+
+.card.dark {
+  background: var(--dark);
+}
+
+.card.large {
+  grid-column: span 2;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profile h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.profile p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+h4 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.quote {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .testimonials {
+    grid-template-areas:
+      "one one two"
+      "three four five";
+  }
+
+  .card.featured {
+    grid-area: one;
+  }
+
+  .card.dark-blue {
+    grid-area: two;
+  }
+
+  .card.white {
+    grid-area: three;
+  }
+
+  .card.dark {
+    grid-area: four;
+  }
+
+  .card.large {
+    grid-area: five;
+  }
+}
