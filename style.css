@@ -1,0 +1,395 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    /* background: url("./images/pattern-background-desktop.svg") contain no-repeat; */
+    background: hsl(225, 100%, 94%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 40px 40px -20px rgba(13, 48, 189, 0.15);
+    max-width: 450px;
+    width: 100%;
+}
+
+.hero-section {
+    background: hsl(245, 75%, 52%);
+    /* padding: 60px 40px; */
+    text-align: center;
+    position: relative;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 30%;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow:
+        20px 10px 0 rgba(255, 255, 255, 0.2),
+        -15px 20px 0 rgba(255, 255, 255, 0.15),
+        40px -5px 0 rgba(255, 255, 255, 0.1),
+        -25px -10px 0 rgba(255, 255, 255, 0.2);
+}
+
+.character {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.character-body {
+    width: 80px;
+    height: 100px;
+    background: hsl(165, 65%, 55%);
+    border-radius: 40px 40px 20px 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+}
+
+.character-head {
+    width: 60px;
+    height: 60px;
+    background: hsl(30, 25%, 85%);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    border: 3px solid hsl(223, 47%, 23%);
+}
+
+.character-hair {
+    width: 50px;
+    height: 35px;
+    background: hsl(223, 47%, 23%);
+    border-radius: 25px 25px 0 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -5px;
+}
+
+.character-face {
+    width: 30px;
+    height: 25px;
+    background: hsl(30, 25%, 85%);
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+    border: 2px solid hsl(223, 47%, 23%);
+}
+
+.character-arm-left {
+    width: 25px;
+    height: 50px;
+    background: hsl(223, 47%, 23%);
+    border-radius: 12px;
+    position: absolute;
+    left: -5px;
+    top: 35px;
+    transform: rotate(-30deg);
+}
+
+.character-arm-right {
+    width: 25px;
+    height: 50px;
+    background: hsl(223, 47%, 23%);
+    border-radius: 12px;
+    position: absolute;
+    right: -5px;
+    top: 35px;
+    transform: rotate(30deg);
+}
+
+.character-hand-left {
+    width: 20px;
+    height: 20px;
+    background: hsl(30, 25%, 85%);
+    border-radius: 50%;
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    border: 2px solid hsl(223, 47%, 23%);
+}
+
+.character-hand-right {
+    width: 20px;
+    height: 20px;
+    background: hsl(223, 47%, 23%);
+    border-radius: 3px;
+    position: absolute;
+    right: -8px;
+    top: 20px;
+}
+
+.music-notes {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.note1 {
+    top: 30px;
+    left: 20%;
+}
+
+.note2 {
+    top: 40px;
+    right: 25%;
+}
+
+.note3 {
+    bottom: 30px;
+    left: 15%;
+}
+
+.note4 {
+    bottom: 40px;
+    right: 20%;
+}
+
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 900;
+    color: hsl(223, 47%, 23%);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 500;
+    color: hsl(224, 23%, 55%);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.plan-details {
+    background: hsl(225, 100%, 98%);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.music-icon {
+    width: 48px;
+    height: 48px;
+    background: hsl(245, 75%, 52%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    position: relative;
+}
+
+.music-icon::before {
+    content: '♪';
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.plan-info {
+    flex: 1;
+    text-align: left;
+}
+
+.plan-name {
+    font-size: 16px;
+    font-weight: 900;
+    color: hsl(223, 47%, 23%);
+    margin-bottom: 5px;
+}
+
+.plan-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: hsl(224, 23%, 55%);
+}
+
+.change-link {
+    color: hsl(245, 75%, 52%);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.change-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.proceed-btn {
+    width: 100%;
+    background: hsl(245, 75%, 52%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Red Hat Display', sans-serif;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 20px rgba(56, 42, 233, 0.19);
+}
+
+.proceed-btn:hover {
+    background: hsl(245, 75%, 60%);
+    transform: translateY(-2px);
+    box-shadow: 0 25px 25px rgba(56, 42, 233, 0.25);
+}
+
+.proceed-btn:active {
+    transform: translateY(0);
+}
+
+.cancel-btn {
+    background: none;
+    border: none;
+    color: hsl(224, 23%, 55%);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Red Hat Display', sans-serif;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    color: hsl(223, 47%, 23%);
+}
+
+.attribution {
+    position: fixed;
+    bottom: 0;
+    left: 4rem;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0.5rem;
+    background-color: aliceblue;
+    color: hsl(224, 23%, 55%);
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        max-width: 375px;
+        border-radius: 15px;
+    }
+
+    .hero-section {
+        padding: 40px 30px;
+    }
+
+    .character {
+        width: 100px;
+        height: 100px;
+    }
+
+    .character-body {
+        width: 65px;
+        height: 80px;
+        top: 20px;
+    }
+
+    .character-head {
+        width: 50px;
+        height: 50px;
+    }
+
+    .content {
+        padding: 30px 25px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .plan-details {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+    }
+
+    .music-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+    }
+
+    .music-icon::before {
+        font-size: 16px;
+    }
+
+    .plan-name {
+        font-size: 15px;
+    }
+
+    .plan-price {
+        font-size: 15px;
+    }
+
+    .change-link {
+        font-size: 13px;
+    }
+
+    .proceed-btn {
+        padding: 16px;
+        font-size: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .cancel-btn {
+        font-size: 15px;
+    }
+}
