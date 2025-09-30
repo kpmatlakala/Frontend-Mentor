@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Component with Sign-up Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, hsl(0, 100%, 74%) 0%, hsl(0, 80%, 70%) 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1110px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .intro-content {
+            color: white;
+            text-align: left;
+        }
+
+        .intro-content h1 {
+            font-size: clamp(28px, 5vw, 50px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .intro-content p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .trial-banner {
+            background: hsl(248, 32%, 49%);
+            color: white;
+            padding: 18px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 400;
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .trial-banner:hover {
+            transform: translateY(-1px);
+        }
+
+        .trial-banner strong {
+            font-weight: 600;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid hsl(246, 25%, 77%);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: hsl(249, 10%, 26%);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: hsl(248, 32%, 49%);
+        }
+
+        .form-group input::placeholder {
+            color: hsl(249, 10%, 26%);
+            font-weight: 600;
+        }
+
+        .form-group.error input {
+            border-color: hsl(0, 100%, 74%);
+            color: hsl(0, 100%, 74%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23FF7979"/><path fill="white" d="M13 13h-2V7h2v6zm0 4h-2v-2h2v2z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 24px;
+        }
+
+        .error-message {
+            display: none;
+            color: hsl(0, 100%, 74%);
+            font-size: 11px;
+            font-weight: 500;
+            font-style: italic;
+            text-align: right;
+            margin-top: 6px;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: hsl(154, 59%, 51%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 hsl(154, 59%, 45%);
+            transition: all 0.1s ease;
+            margin-bottom: 10px;
+        }
+
+        .submit-btn:hover {
+            background: hsl(154, 59%, 55%);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 hsl(154, 59%, 45%);
+        }
+
+        .terms {
+            text-align: center;
+            font-size: 11px;
+            color: hsl(246, 25%, 77%);
+            line-height: 1.8;
+        }
+
+        .terms a {
+            color: hsl(0, 100%, 74%);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 64px;
+                text-align: center;
+            }
+
+            .intro-content {
+                text-align: center;
+            }
+
+            .intro-content h1 {
+                font-size: 28px;
+                margin-bottom: 24px;
+            }
+
+            .form-container {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                gap: 48px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="intro-content">
+            <h1>Learn to code by watching others</h1>
+            <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+        </div>
+        
+        <div class="form-section">
+            <div class="trial-banner">
+                <strong>Try it free 7 days</strong> then $20/mo. thereafter
+            </div>
+            
+            <div class="form-container">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                        <div class="error-message">First Name cannot be empty</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="lastName" placeholder="Last Name" required>
+                        <div class="error-message">Last Name cannot be empty</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address" required>
+                        <div class="error-message">Looks like this is not an email</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" required>
+                        <div class="error-message">Password cannot be empty</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Claim your free trial</button>
+                </form>
+                
+                <p class="terms">
+                    By clicking the button, you are agreeing to our <a href="#">Terms and Services</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate First Name
+            if (firstName.value.trim() === '') {
+                firstName.parentElement.classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate Last Name
+            if (lastName.value.trim() === '') {
+                lastName.parentElement.classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate Email
+            if (email.value.trim() === '') {
+                email.parentElement.classList.add('error');
+                email.parentElement.querySelector('.error-message').textContent = 'Email Address cannot be empty';
+                isValid = false;
+            } else if (!isValidEmail(email.value.trim())) {
+                email.parentElement.classList.add('error');
+                email.parentElement.querySelector('.error-message').textContent = 'Looks like this is not an email';
+                isValid = false;
+            }
+            
+            // Validate Password
+            if (password.value.trim() === '') {
+                password.parentElement.classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Form is valid - you would normally submit to server here
+                alert('Form submitted successfully!');
+                // Reset form
+                this.reset();
+            }
+        });
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Clear error state when user starts typing
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.parentElement.classList.contains('error')) {
+                    this.parentElement.classList.remove('error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

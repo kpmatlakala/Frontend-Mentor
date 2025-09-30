@@ -1,0 +1,178 @@
+/* 1. Importing the font */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 13px;
+  background-color: hsl(214, 17%, 92%); /* Grey 100 */
+  color: hsl(217, 19%, 35%);            /* Grey 500 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Grid Container */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin: auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* 3. Card Base */
+.card {
+  background: hsl(0, 0%, 100%); /* White */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  line-height: 1.4;
+  transition: transform 0.3s ease;
+}
+
+/* 4. Profile Section */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.profile h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 20;
+}
+
+.profile p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* 5. Quote/Text Styling */
+.card h4 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: inherit;
+  z-index: 20;
+}
+
+.card .quote {
+  font-weight: 500;
+  opacity: 0.85;
+  color: inherit;
+  z-index: 20;
+}
+
+/* 6. Color Variants */
+.purple {
+  background-color: hsl(263, 55%, 52%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark-blue {
+  background-color: hsl(217, 19%, 35%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark {
+  background-color: hsl(219, 29%, 14%);
+  color: hsl(0, 0%, 100%);
+}
+
+.white {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(217, 19%, 35%);
+}
+
+/* 7. Grid Placements */
+.card.purple {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.card.dark-blue {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.card.white:not(.large) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.card.dark {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.card.large {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+
+/* 8. Hover Effects (Optional) */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* 9. Responsive Design */
+@media (max-width: 1024px) {
+  .testimonials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card.purple,
+  .card.dark {
+    grid-column: span 2;
+  }
+
+  .card.large {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Make the purple card a positioning context */
+.card.purple {
+  position: relative;
+}
+
+/* Position the quote image at the top right */
+.card.purple .quote-img {
+  position: absolute;
+  top: 2px;
+  right: 15%; /* Position it around the middle of the second column */
+  width: 120px;
+  height: auto;
+  z-index: 0;
+}
+
+/* Ensure text content stays on top */
+.card.purple .profile,
+.card.purple h4,
+.card.purple .quote {
+  position: relative;
+  z-index: 1;
+}

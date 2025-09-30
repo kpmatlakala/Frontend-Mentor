@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+      <div class="faq-card">
+          <div class="faq-header">
+              <img src="./assets/images/icon-star.svg" alt="" class="faq-icon">
+              <h1 class="faq-title">FAQs</h1>
+          </div>
+          
+          <div class="faq-list">
+              <div class="faq-item">
+                  <button class="faq-question" data-faq="0">
+                      <span>What is Frontend Mentor, and how will it help me?</span>
+                      <div class="faq-toggle">
+                          <img src="./assets/images/icon-plus.svg" alt="" class="toggle-icon plus">
+                          <img src="./assets/images/icon-minus.svg" alt="" class="toggle-icon minus">
+                      </div>
+                  </button>
+                  <div class="faq-answer">
+                      <div class="faq-answer-content">
+                          Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="faq-item">
+                  <button class="faq-question" data-faq="1">
+                      <span>Is Frontend Mentor free?</span>
+                      <div class="faq-toggle">
+                          <img src="./assets/images/icon-plus.svg" alt="" class="toggle-icon plus">
+                          <img src="./assets/images/icon-minus.svg" alt="" class="toggle-icon minus">
+                      </div>
+                  </button>
+                  <div class="faq-answer">
+                      <div class="faq-answer-content">
+                          Yes, Frontend Mentor offers both free and premium coding challenges, with the free option providing access to a range of projects suitable for all skill levels.
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="faq-item">
+                  <button class="faq-question" data-faq="2">
+                      <span>Can I use Frontend Mentor projects in my portfolio?</span>
+                      <div class="faq-toggle">
+                          <img src="./assets/images/icon-plus.svg" alt="" class="toggle-icon plus">
+                          <img src="./assets/images/icon-minus.svg" alt="" class="toggle-icon minus">
+                      </div>
+                  </button>
+                  <div class="faq-answer">
+                      <div class="faq-answer-content">
+                          Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent way to showcase your skills to potential employers!
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="faq-item">
+                  <button class="faq-question" data-faq="3">
+                      <span>How can I get help if I'm stuck on a Frontend Mentor challenge?</span>
+                      <div class="faq-toggle">
+                          <img src="./assets/images/icon-plus.svg" alt="" class="toggle-icon plus">
+                          <img src="./assets/images/icon-minus.svg" alt="" class="toggle-icon minus">
+                      </div>
+                  </button>
+                  <div class="faq-answer">
+                      <div class="faq-answer-content">
+                          The best place to get help is inside Frontend Mentor's Discord community. There's a help channel where you can ask questions and seek support from other community members.
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Kabelo P Matlakala</a>.
+  </div>
+
+  <script>
+      class FAQAccordion {
+          constructor() {
+              this.questions = document.querySelectorAll('.faq-question');
+              this.init();
+          }
+
+          init() {
+              this.questions.forEach((question, index) => {
+                  question.addEventListener('click', () => this.toggleFAQ(index));
+                  question.addEventListener('keydown', (e) => this.handleKeyDown(e, index));
+              });
+
+              // Open first question by default
+              this.openFAQ(0);
+          }
+
+          toggleFAQ(index) {
+              const question = this.questions[index];
+              const answer = question.nextElementSibling;
+              const toggle = question.querySelector('.faq-toggle');
+              const isActive = answer.classList.contains('active');
+
+              if (isActive) {
+                  this.closeFAQ(index);
+              } else {
+                  // Close all other FAQs
+                  this.closeAllFAQs();
+                  this.openFAQ(index);
+              }
+          }
+
+          openFAQ(index) {
+              const question = this.questions[index];
+              const answer = question.nextElementSibling;
+              const toggle = question.querySelector('.faq-toggle');
+              
+              answer.classList.add('active');
+              toggle.classList.add('active');
+              question.setAttribute('aria-expanded', 'true');
+              
+              // Set max-height to scrollHeight for smooth animation
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+
+          closeFAQ(index) {
+              const question = this.questions[index];
+              const answer = question.nextElementSibling;
+              const toggle = question.querySelector('.faq-toggle');
+              
+              answer.classList.remove('active');
+              toggle.classList.remove('active');
+              question.setAttribute('aria-expanded', 'false');
+              answer.style.maxHeight = '0px';
+          }
+
+          closeAllFAQs() {
+              this.questions.forEach((_, index) => {
+                  this.closeFAQ(index);
+              });
+          }
+
+          handleKeyDown(event, index) {
+              const { key } = event;
+              
+              switch (key) {
+                  case 'Enter':
+                  case ' ':
+                      event.preventDefault();
+                      this.toggleFAQ(index);
+                      break;
+                  case 'ArrowDown':
+                      event.preventDefault();
+                      this.focusNext(index);
+                      break;
+                  case 'ArrowUp':
+                      event.preventDefault();
+                      this.focusPrevious(index);
+                      break;
+                  case 'Home':
+                      event.preventDefault();
+                      this.questions[0].focus();
+                      break;
+                  case 'End':
+                      event.preventDefault();
+                      this.questions[this.questions.length - 1].focus();
+                      break;
+              }
+          }
+
+          focusNext(currentIndex) {
+              const nextIndex = (currentIndex + 1) % this.questions.length;
+              this.questions[nextIndex].focus();
+          }
+
+          focusPrevious(currentIndex) {
+              const prevIndex = currentIndex === 0 ? this.questions.length - 1 : currentIndex - 1;
+              this.questions[prevIndex].focus();
+          }
+      }
+
+      // Initialize the FAQ accordion when the DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+          new FAQAccordion();
+      });
+  </script>
+</body>
+</html>
