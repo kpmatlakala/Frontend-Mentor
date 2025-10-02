@@ -1,102 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kabelo P. Matlakala | Frontend Mentor Projects</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <input type="checkbox" id="theme-toggle" />
-  <label for="theme-toggle">🌒</label>
+  <div class="theme-toggle" id="theme-toggle">
+    <span class="theme-toggle-icon">🌙</span>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <div class="header-badge">Frontend Developer</div>
+      <h1>Kabelo P. Matlakala</h1>
+      <p class="header-subtitle">Building real-world projects through Frontend Mentor challenges, one component at a time</p>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-value" style="color: var(--accent-purple)" id="total-count">0</span>
+          <span class="stat-label">Total Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" style="color: var(--accent-emerald)" id="completed-count">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" style="color: var(--accent-orange)" id="progress-count">0</span>
+          <span class="stat-label">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <header>
-      <h1>Kabelo P. Matlakala</h1>
-      <p>Passionate web developer building real-world Frontend Mentor projects.</p>
-    </header>
+    <section>
+      <div class="section-header">
+        <div class="section-line"></div>
+        <h2>Frontend Mentor Challenges</h2>
+      </div>
+      
+      <div class="accordion" id="projects-accordion">
+        <!-- Accordion items will be injected here -->
+      </div>
+    </section>
 
-    <h2>&gt; Frontend Mentor Challenges</h2>
-
-    <section class="project-list">
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-header">
-            <h3>Getting Started</h3>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <div class="projects">
-              <!-- Projects will be dynamically inserted here -->
-            </div>
+    <section>
+      <div class="info-card">
+        <h2><span>🧰</span> Tech Stack</h2>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>HTML5 & CSS3</span>
           </div>
-        </div>
-
-        <div class="accordion-item">
-          <button class="accordion-header">
-            <h3>Responsive Design Fundamentals</h3>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <div class="projects">
-              <!-- Projects will be dynamically inserted here -->
-            </div>
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>JavaScript (ES6+)</span>
           </div>
-        </div>
-
-        <div class="accordion-item">
-          <button class="accordion-header">
-            <h3>Frontend Challenges</h3>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <div class="projects">
-              <!-- Projects will be dynamically inserted here -->
-            </div>
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>Responsive Design</span>
+          </div>
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>Accessibility</span>
+          </div>
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>Git & GitHub</span>
+          </div>
+          <div class="tech-item">
+            <span class="tech-check">✓</span>
+            <span>React & Tailwind</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="tech-stack">
-      <h2>🧰 Tech Stack</h2>
-      <ul>
-        <li>HTML5 & CSS3</li>
-        <li>Responsive Layouts (mobile-first)</li>
-        <li>Accessibility (WCAG principles)</li>
-        <li>Vanilla JavaScript (in relevant challenges)</li>
-        <li>Git for version control</li>
-        <li>React, Tailwind CSS (optional)</li>
-      </ul>
-    </section>
+    <div class="info-grid">
+      <div class="info-card">
+        <h2><span>📌</span> About Me</h2>
+        <p>
+          Hi! I'm <strong>Kabelo Peter Matlakala</strong>, a passionate web developer continuously improving by building real-world projects through platforms like Frontend Mentor. Each challenge helps me master new skills and best practices in modern web development.
+        </p>
+      </div>
 
-    <section class="about">
-      <h2>📌 About Me</h2>
-      <p>
-        Hi! I'm <strong>Kabelo Peter Matlakala</strong>, a passionate web developer continuously improving by
-        building real-world projects through platforms like Frontend Mentor.
-      </p>
-    </section>
-
-    <section class="contact">
-      <h2>&gt; Contact</h2>
-      <ul>
-        <li>👨‍💻 <a href="https://github.com/kabelomatlakala" target="_blank">GitHub Profile</a></li>
-        <li>📩 <a href="mailto:matlakalakabelo1@gmail.com">matlakalakabelo1@gmail.com</a></li>
-      </ul>
-    </section>
-
-    <footer>
-      <p>Made with ❤️ by Kabelo Peter Matlakala</p>
-    </footer>
+      <div class="info-card">
+        <h2><span>🤝</span> Let's Connect</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/kabelomatlakala" target="_blank">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+              </svg>
+              <span>GitHub Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:matlakalakabelo1@gmail.com">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span>matlakalakabelo1@gmail.com</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
-  <script src="/scripts/projects-data.js"></script>
-  <script src="/main.js"></script>
-</body>
 
+  <footer>
+    <p>Made with <span style="color: var(--accent-red)">❤️</span> by Kabelo Peter Matlakala</p>
+  </footer>
+
+  <script src="/scripts/projects-data.js"></script>
+  <script type="module">
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
+    
+    // Check saved theme or default to dark
+    let currentTheme = 'dark';
+    
+    themeToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.classList.toggle('light', currentTheme === 'light');
+      themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+    });
+
+    // Accordion functionality
+    function initAccordion() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          const isActive = item.classList.contains('active');
+          
+          // Close all
+          document.querySelectorAll('.accordion-item').forEach(i => {
+            i.classList.remove('active');
+          });
+          
+          // Open clicked if it wasn't active
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+      
+      // Open first by default
+      const firstItem = document.querySelector('.accordion-item');
+      if (firstItem) {
+        firstItem.classList.add('active');
+      }
+    }
+
+    // Create project card
+    function createProjectCard(project) {
+      const card = document.createElement('div');
+      card.className = project.isGhost ? 'project-card ghost-card' : 'project-card';
+      
+      const levelLabels = ['Newbie', 'Intermediate', 'Advanced', 'Expert'];
+      
+      card.innerHTML = `
+        <div class="project-image-wrapper">
+          ${project.isGhost 
+            ? '<div class="ghost-image">+</div>' 
+            : `<img src="${project.imageUrl}" alt="${project.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22180%22%3E%3Crect fill=%22%23374151%22 width=%22320%22 height=%22180%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%239CA3AF%22 font-size=%2216%22%3ENo Image%3C/text%3E%3C/svg%3E'">`
+          }
+          <div class="project-level" data-level="${project.level}">
+            ${levelLabels[project.level - 1]}
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">${project.title}</h3>
+          <p class="project-description">${project.description}</p>
+          <div class="tech-stack">
+            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+          </div>
+          <div class="project-footer">
+            ${project.comingSoon 
+              ? '<div class="coming-soon">Coming Soon...</div>'
+              : `
+                <a href="${project.demoUrl}" target="_blank" class="btn btn-primary">Live Demo</a>
+                ${project.feSolutionLink 
+                  ? `<a href="${project.feSolutionLink}" target="_blank" class="btn btn-secondary" title="Frontend Mentor Solution">
+                      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                      </svg>
+                    </a>`
+                  : ''
+                }
+              `
+            }
+          </div>
+        </div>
+      `;
+      
+      return card;
+    }
+
+    // Render projects
+    function renderProjects() {
+      const accordion = document.getElementById('projects-accordion');
+      const categories = [
+        { key: 'Getting Started', icon: '🚀' },
+        { key: 'Responsive Design Fundamentals', icon: '📱' },
+        { key: 'Challenges', icon: '⚡' }
+      ];
+      
+      let totalProjects = 0;
+      let completedProjects = 0;
+      let inProgressProjects = 0;
+      
+      categories.forEach(({ key, icon }) => {
+        const projects = projectsData[key];
+        const completed = projects.filter(p => !p.comingSoon).length;
+        const inProgress = projects.filter(p => p.comingSoon).length;
+        
+        totalProjects += projects.length;
+        completedProjects += completed;
+        inProgressProjects += inProgress;
+        
+        const item = document.createElement('div');
+        item.className = 'accordion-item';
+        
+        item.innerHTML = `
+          <button class="accordion-header">
+            <div class="accordion-title-wrapper">
+              <span class="accordion-icon">${icon}</span>
+              <span class="accordion-title">${key}</span>
+              <span class="accordion-count">${projects.length}</span>
+            </div>
+            <svg class="accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="projects"></div>
+          </div>
+        `;
+        
+        const projectsContainer = item.querySelector('.projects');
+        projects.forEach(project => {
+          projectsContainer.appendChild(createProjectCard(project));
+        });
+        
+        accordion.appendChild(item);
+      });
+      
+      // Update stats
+      document.getElementById('total-count').textContent = totalProjects;
+      document.getElementById('completed-count').textContent = completedProjects;
+      document.getElementById('progress-count').textContent = inProgressProjects;
+      
+      initAccordion();
+    }
+
+    // Initialize when DOM is ready
+    renderProjects();
+  </script>
+</body>
 </html>
