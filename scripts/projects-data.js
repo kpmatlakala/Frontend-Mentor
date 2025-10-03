@@ -2,36 +2,44 @@ const projectsData = {
   'Getting Started': [
     {
       title: 'QR Code Component',
-      imageUrl: '/assets/previews/getting-started/qr-preview.jpg',
-      demoUrl: '/Getting_Started/qr-code-component/index.html',
+      imageUrl: '/assets/previews/getting-started/qr-preview.jpg',      
       description: 'A clean QR code component focusing on basic HTML structure and CSS styling techniques.',
       technologies: ['HTML', 'CSS'],
       level: 1,
-      feSolutionLink: 'https://www.frontendmentor.io/solutions/qr-code-component-using-html-css-jM7UeVsjz7'
+      demoUrl: '/Getting_Started/qr-code-component/index.html',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/qr-code-component-using-html-and-css-qz8jEXNqCK',
+      gitRepoLink: 'kpmatlakala/Frontend-Mentor/tree/qr-code-component',
     },
     {
       title: 'Blog Preview Card',
-      imageUrl: '/assets/previews/getting-started/blog-preview.jpg',
-      demoUrl: '/Getting_Started/blog-preview-card/index.html',
+      imageUrl: '/assets/previews/getting-started/blog-preview.jpg',    
       description: 'An interactive blog card showcasing post previews with images and author information.',
       technologies: ['HTML', 'CSS'],
-      level: 1
+      level: 1,
+      demoUrl: '/Getting_Started/blog-preview-card/index.html',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/blog-preview-card-using-html-and-css-P1kOOz4yMZ',
+      gitRepoLink: 'kpmatlakala/Frontend-Mentor/tree/blog-preview-card',
     },
     {
       title: 'Social Links Profile',
       imageUrl: '/assets/previews/getting-started/social-preview.jpg',
-      demoUrl: '/Getting_Started/social-links-profile/index.html',
       description: 'A clean profile page displaying social media links with hover effects.',
       technologies: ['HTML', 'CSS'],
-      level: 1
+      level: 1,
+      demoUrl: '/Getting_Started/social-links-profile/index.html',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/social-links-profile-using-html-and-css-caubdzb98Z',
+      gitRepoLink: 'kpmatlakala/Frontend-Mentor/tree/social-links-profile',
     },
     {
       title: 'Recipe Page',
-      imageUrl: '/assets/previews/getting-started/recipe-preview.jpg',
-      demoUrl: '/Getting_Started/recipe-page/index.html',
+      imageUrl: '/assets/previews/getting-started/recipe-preview.jpg',      
       description: 'A structured recipe page with ingredients, instructions, and preparation details.',
       technologies: ['HTML', 'CSS'],
-      level: 1
+      level: 1,
+      demoUrl: '/Getting_Started/recipe-page/index.html',
+      feSolutionLink: ' https://www.frontendmentor.io/solutions/recipe-page-using-html-and-css-18WbBQzhlc',
+      gitRepoLink: 'kpmatlakala/Frontend-Mentor/tree/recipe-page',
+     
     }
   ],
   'Responsive Design Fundamentals': [
