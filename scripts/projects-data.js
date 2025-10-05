@@ -43,21 +43,23 @@ const projectsData = {
     }
   ],
   'Responsive Design Fundamentals': [
-    {
+    { 
       title: 'Product Preview Card Component',
-      imageUrl: '/assets/previews/responsive-designs/product-card-preview.jpg',
-      demoUrl: '/Responsive_Designs/product-preview-card-component/',
+      imageUrl: '/assets/previews/responsive-designs/product-card-preview.jpg',      
       description: 'A responsive product card showcasing items with images and pricing.',
       technologies: ['HTML', 'CSS'],
-      level: 2
+      level: 1,
+      demoUrl: '/Responsive_Designs/product-preview-card-component/',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/product-preview-card-component-using-html-and-css-1QZ5Ky36qO',
+      gitRepoLink: 'kpmatlakala/Frontend-Mentor/tree/product-preview-card-component',
     },
     {
       title: 'Four Card Feature Section',
       imageUrl: '/assets/previews/responsive-designs/four-cards-preview.jpg',
       demoUrl: '/Responsive_Designs/four-card-feature-section/',
       description: 'A responsive grid layout displaying four feature cards.',
-      technologies: ['HTML', 'CSS'],
-      level: 2
+      technologies: ['HTML', 'CSS Grid'],
+      level: 1
     },
     {
       title: 'Testimonials Grid Section',
