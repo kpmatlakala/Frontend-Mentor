@@ -51,3 +51,8 @@ This project helped me practice creating a clean, centered layout with smooth ho
   transform: translateY(-2px);
   transition: all 0.3s ease;
 }
+```
+
+## Author
+* Frontend Mentor - [@kpmatlakala](https://www.frontendmentor.io/profile/kpmatlakala)
+* GitHub - [@kpmatlakala](https://github.com/kpmatlakala)

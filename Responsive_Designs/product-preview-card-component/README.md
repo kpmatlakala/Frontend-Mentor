@@ -59,3 +59,9 @@ This project helped me practice creating a responsive product card component wit
     <p>A floral, solar and voluptuous interpretation...</p>
   </div>
 </article>
+```
+
+
+## Author
+* Frontend Mentor - [@kpmatlakala](https://www.frontendmentor.io/profile/kpmatlakala)
+* GitHub - [@kpmatlakala](https://github.com/kpmatlakala)

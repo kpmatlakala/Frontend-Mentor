@@ -46,3 +46,8 @@ Brief
 ### What I learned
 
 In this project, I focused on using semantic HTML to make the presentation of HTML markup more refined. Semantic HTML clearly describes its meaning to both the browser and developer.
+
+
+## Author
+* Frontend Mentor - [@kpmatlakala](https://www.frontendmentor.io/profile/kpmatlakala)
+* GitHub - [@kpmatlakala](https://github.com/kpmatlakala)

@@ -54,3 +54,6 @@ This project helped me practice creating well-structured content with proper sem
 </section>
 ```
 
+## Author
+* Frontend Mentor - [@kpmatlakala](https://www.frontendmentor.io/profile/kpmatlakala)
+* GitHub - [@kpmatlakala](https://github.com/kpmatlakala)
