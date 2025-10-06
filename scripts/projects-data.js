@@ -93,7 +93,9 @@ const projectsData = {
       tags: ['hackathon', 'responsive', 'real-world', 'api-integration'],
       level: 3,
       demoUrl: '/Challenges/weather-app/',
-      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/weather-app',
+      // gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/weather-app',
+      isGhost: true,
+      comingSoon: true,
       isHackathon: true,
       hackathonName: 'FM30 Hackathon 2025'
     },
