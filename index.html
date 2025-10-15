@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Ping coming soon page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">    
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><img src="./images/logo.svg" alt="Ping Logo"></div>
+        
+        <h1 class="heading">We are launching <strong>soon!</strong></h1>
+        <p class="subtitle">Subscribe and get notified</p>
+        
+        <div class="form-container">
+            <form id="emailForm" class="form-group">
+                <div style="flex: 1; position: relative;">
+                    <input 
+                        type="email" 
+                        id="emailInput"
+                        class="email-input" 
+                        placeholder="Your email address..."
+                        required
+                    >
+                    <div id="errorMessage" class="error-message"></div>
+                </div>
+                <button type="submit" class="notify-btn">Notify Me</button>
+            </form>
+        </div>
+        
+        <div class="dashboard-preview">
+            <img src="./images/illustration-dashboard.png" alt="Dashboard Mockup">
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+        <p class="copyright">&copy; Copyright Ping. All rights reserved.</p>
+    </div>
+
+    <footer>
+        <p class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="#">Kabelo P Matlakala</a>.
+        </p>
+    </footer>
+
+    <script>
+      const emailForm = document.getElementById('emailForm');
+      const emailInput = document.getElementById('emailInput');
+      const errorMessage = document.getElementById('errorMessage');
+
+      function validateEmail(email) {
+          return validateEmailAdvanced(email);
+      }
+
+      function showError(message) {
+          errorMessage.textContent = message;
+          errorMessage.classList.add('show');
+          emailInput.classList.add('error');
+          emailForm.classList.add('has-error');
+          
+          // Remove shake animation after it completes
+          setTimeout(() => {
+              emailForm.classList.remove('has-error');
+          }, 500);
+      }
+
+      function hideError() {
+          errorMessage.classList.remove('show');
+          emailInput.classList.remove('error');
+          emailForm.classList.remove('has-error');
+      }
+
+      // Additional validation for common email mistakes
+      function validateEmailAdvanced(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          
+          if (!emailRegex.test(email)) {
+              return false;
+          }
+          
+          // Check for common mistakes
+          const commonMistakes = [
+              email.includes('..'),
+              email.startsWith('.'),
+              email.endsWith('.'),
+              email.includes('@.'),
+              email.includes('.@')
+          ];
+          
+          return !commonMistakes.some(mistake => mistake);
+      }
+
+      emailInput.addEventListener('input', function() {
+          if (this.value.trim() !== '') {
+              hideError();
+          }
+      });
+
+      emailInput.addEventListener('blur', function() {
+          const email = this.value.trim();
+          if (email !== '' && !validateEmailAdvanced(email)) {
+              showError('Please provide a valid email address');
+          }
+      });
+
+      emailForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const email = emailInput.value.trim();
+          
+          if (email === '') {
+              showError('Whoops! It looks like you forgot to add your email');
+              emailInput.focus();
+              return;
+          }
+          
+          if (!validateEmailAdvanced(email)) {
+              showError('Please provide a valid email address');
+              emailInput.focus();
+              return;
+          }
+          
+          // Success case
+          hideError();
+          
+          // Simulate loading state
+          const button = document.querySelector('.notify-btn');
+          const originalText = button.textContent;
+          button.textContent = 'Submitting...';
+          button.disabled = true;
+          
+          setTimeout(() => {
+              button.textContent = '✓ Subscribed!';
+              setTimeout(() => {
+                  button.textContent = originalText;
+                  button.disabled = false;
+                  emailInput.value = '';
+              }, 2000);
+          }, 1000);
+      });
+
+      // Add some interactive dashboard animations
+      document.addEventListener('DOMContentLoaded', function() {
+          const dots = document.querySelectorAll('.chart-dot');
+          
+          setInterval(() => {
+              dots.forEach(dot => {
+                  const randomTop = Math.random() * 60 + 20;
+                  const randomRight = Math.random() * 30 + 10;
+                  dot.style.top = randomTop + '%';
+                  dot.style.right = randomRight + '%';
+              });
+          }, 3000);
+      });
+  </script>
+</body>
+</html>

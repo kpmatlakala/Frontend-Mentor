@@ -1,0 +1,281 @@
+:root {
+    --primary-blue: hsl(223, 87%, 63%);
+    --pale-blue: hsl(223, 100%, 88%);
+    --light-red: hsl(354, 100%, 66%);
+    --gray: hsl(0, 0%, 59%);
+    --very-dark-blue: hsl(209, 33%, 12%);
+    --white: hsl(0, 0%, 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--very-dark-blue);
+    background-color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.container {
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+    letter-spacing: 5px;
+}
+
+.heading {
+    font-size: 1.375rem;
+    font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+.heading strong {
+    color: var(--very-dark-blue);
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: var(--very-dark-blue);
+    margin-bottom: 2rem;
+}
+
+.form-container {
+    margin-bottom: 4rem;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+}
+
+.email-input {
+    width: 100%;
+    padding: 1rem 2rem;
+    border: 1px solid var(--pale-blue);
+    border-radius: 28px;
+    font-size: 0.75rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.email-input::placeholder {
+    color: var(--pale-blue);
+}
+
+.email-input:focus {
+    border-color: var(--primary-blue);
+}
+
+.email-input.error {
+    border-color: var(--light-red);
+    box-shadow: 0 0 0 3px rgba(255, 99, 99, 0.1);
+}
+
+.email-input.error:focus {
+    border-color: var(--light-red);
+    box-shadow: 0 0 0 3px rgba(255, 99, 99, 0.2);
+}
+
+.error-message {
+    color: var(--light-red);
+    font-size: 0.625rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    min-height: 16px;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notify-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 28px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(76, 123, 243, 0.2);
+}
+
+.notify-btn:hover {
+    background-color: hsl(223, 87%, 58%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 123, 243, 0.3);
+}
+
+.notify-btn:active {
+    transform: translateY(0);
+}
+
+.dashboard-preview {
+    margin-bottom: 4rem;
+    opacity: 0.8;
+}
+
+.dashboard-preview img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--pale-blue);
+    border-radius: 50%;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.copyright {
+    font-size: 0.625rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+.attribution {
+    position: absolute;
+    left:0;
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 11px;
+    text-align: center;
+    background-color: var(--pale-blue);
+    color: var(--gray);
+}
+
+.attribution a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    body {
+        padding: 4rem 2rem;
+    }
+
+    .container {
+        max-width: 720px;
+    }
+
+    .logo {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .heading {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .email-input {
+        flex: 1;
+        font-size: 1rem;
+        padding: 1.25rem 2rem;
+    }
+
+    .notify-btn {
+        width: auto;
+        min-width: 200px;
+        font-size: 1rem;
+        padding: 1.25rem 3.5rem;
+    }
+
+    .error-message {
+        position: absolute;
+        top: 100%;
+        left: 2rem;
+        text-align: left;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    .dashboard-preview {
+        margin-bottom: 5rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+    }
+}
