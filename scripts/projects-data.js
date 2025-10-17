@@ -141,16 +141,48 @@ const projectsData = {
     },
     {
       title: 'Intro Component with Signup Page',
+      imageUrl: '/assets/previews/challenges/signup-intro-preview.jpg',
+      description: 'Responsive signup form with real-time validation and error handling.',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      level: 1,      
+      demoUrl: '/Challenges/intro-component-with-signup-form/',
+      //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
+      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-signup-form'
+    },
+    {
+      title: 'Intro Component with Signup Page',
       imageUrl: '/assets/previews/challenges/signup-intro-preview',
       description: 'Responsive signup form with real-time validation and error handling.',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      level: 1,
-      isGhost: true,
-      comingSoon: true,
+      level: 1,     
       demoUrl: '/Challenges/intro-component-with-signup-form/',
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-      // gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-signup-form'
-    }
+      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-sign-up-form'
+    },
+    // {
+    //   title: 'Intro Component with Signup Page',
+    //   imageUrl: '/assets/previews/challenges/signup-intro-preview',
+    //   description: 'Responsive signup form with real-time validation and error handling.',
+    //   technologies: ['HTML', 'CSS', 'JavaScript'],
+    //   level: 1,
+    //   isGhost: true,
+    //   comingSoon: true,
+    //   demoUrl: '/Challenges/intro-component-with-signup-form/',
+    //   //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
+    //   // gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-signup-form'
+    // },
+    // {
+    //   title: 'Intro Component with Signup Page',
+    //   imageUrl: '/assets/previews/challenges/signup-intro-preview',
+    //   description: 'Responsive signup form with real-time validation and error handling.',
+    //   technologies: ['HTML', 'CSS', 'JavaScript'],
+    //   level: 1,
+    //   isGhost: true,
+    //   comingSoon: true,
+    //   demoUrl: '/Challenges/intro-component-with-signup-form/',
+    //   //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
+    //   // gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-signup-form'
+    // },
     // {
     //   title: 'Coming Soon',
     //   imageUrl: '',

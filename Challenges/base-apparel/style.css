@@ -1,0 +1,271 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+body
+{
+    background: linear-gradient(to left, hsl(0, 0%, 100%), hsl(0, 100%, 98%) );
+}
+
+.logo
+{
+    margin: 10vh 10vw;
+}
+
+.hero
+{
+    position: absolute;
+    display: flex;
+    flex-direction:row-reverse;    
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.hero_img
+{    
+    position: relative;
+    background: url(images/hero-desktop.jpg);
+    background-size: cover;
+    width: 48vw;
+    height: 100vh;
+}
+
+.hero_content
+{
+    margin: 20vh 10vw ;     
+    width: 40vw;
+    height: 100vh;    
+}
+
+.heading
+{
+    padding-top: 10vh;
+    padding-right: 10vw;
+    margin-bottom: 2.5vh;
+    letter-spacing: 12px;
+    line-height: 60px;
+}
+
+.heading h1
+{
+    font-size: 8vh;
+    font-weight: 300;
+    color: hsl(0, 36%, 70%);
+}
+
+.heading h2
+{
+    font-size: 8vh;
+    font-weight: 600;
+    color: hsl(0, 6%, 24%);
+}
+
+.hero_content p
+{    
+    font-size: 2vh;
+    font-weight: 600;
+    line-height: 2vi;
+    color: hsl(0, 36%, 70%);
+    width: 75%;
+}
+
+.hero_content .emailInput
+{
+    font-size:16px;
+    font-weight: 600;
+    color: hsl(0, 6%, 24%);
+    margin-top: 6vh;
+    padding-left: 32px;
+    height: 7.8vh;
+    width: 28vw;
+    outline: none;
+    border: 2px solid hsla(0, 6%, 24%, 0.562);
+    border-radius: 50px  
+}
+
+.hero_content .emailInput:focus
+{
+    border: 3px solid hsl(0, 93%, 68%);
+}
+
+.hero_content .btn_container
+{
+    transform: translateX(24vw) translateY(-7.25vh);
+    height: 9vh;
+    width: 25vw;
+}
+
+#err_icn
+{
+    display: inline-block;
+}
+
+.hero_content a#err_icn img
+{ 
+    background: none;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 25px;
+}
+
+.hero_content a#err_icn img:hover
+{ 
+    box-shadow: 1px 10px 20px -4px hsl(0, 100%, 57%); 
+}
+
+.hero_content .err
+{
+    margin-top: 5px;
+    margin-left: -20vw;
+    font-weight: 600;
+    color: hsl(0, 74%, 74%);
+}
+
+.hero_content .emb_btn
+{ 
+    transform: translateY(-1.25vh); 
+    background: linear-gradient( to right, hsl(0, 80%, 86%), hsl(0, 74%, 74%) ) ; 
+    box-shadow: 0px 10px 30px -5px hsl(0, 80%, 80%);   
+    margin-left: 2vw;
+    height: 8.5vh;
+    width: 35%;
+    border:none;
+    border-radius: 50px;
+}
+
+.hero_content .emb_btn:hover
+{ 
+    background: linear-gradient( to right, hsl(0, 80%, 94%), hsl(0, 80%, 86%) ) ;    
+    box-shadow: 0px 10px 30px -5px hsl(0, 74%, 74%);
+    margin-left: 1.5px;
+}
+
+footer
+{
+    position:absolute;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 16px;
+    padding-left: 5vw;
+}
+
+.attribution 
+{
+  font-size: 12px;
+  text-align: center;
+}
+
+.attribution a
+{
+  color: hsl(228, 45%, 44%);
+}
+
+
+@media screen and (max-width: 768px) 
+{  
+    .logo
+    {
+        margin: 6vh 8vw;
+    }
+
+    .hero
+    {
+        position: absolute;
+        display: flex;
+        flex-direction:column-reverse;  
+        align-items: center;  
+        text-align: center;
+        top: 14vh;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .hero_img
+    {    
+        position:absolute;
+        background: url(images/hero-mobile.jpg);
+        background-size: cover;
+        top:0;
+        width: 100%;
+        height: 50%;
+    }
+
+    .hero_content
+    {
+        margin-top: 55% ;     
+        width: 80vw;
+        height: 100%;    
+    } 
+
+    .heading
+    {
+        position:relative;
+        margin-top: 100%;
+        padding-top:64px;
+        width: 100%;
+        letter-spacing: 10px;
+    }
+
+    .heading h1
+    {
+        font-size: 10vi;       
+    }
+
+    .heading h2
+    {
+        font-size: 8vi;        
+    }
+
+    .hero_content p
+    {  
+        line-height: 20px;
+        width: 100%;
+    }
+
+    .hero_content .emailInput
+    { 
+        width: 70vw; 
+    }
+
+    .hero_content .btn_container
+    {
+        transform: translateX(42vw) translateY(-7.5vh);
+        height: 9vh;
+        width: 50vw;
+    }
+
+    .hero_content .emb_btn
+    { 
+        transform: translateY(-0.8vh);       
+        margin-left: 1vw;
+        height: 8.5vh;
+        width: 25vw; 
+    }
+
+    .hero_content .err
+    {        
+        margin-left: -80vw;     
+        font-size: 14px;
+    }
+
+    footer
+    {   
+        position: fixed;
+        bottom: -8px;
+        width: 90%;
+        height: 16px;
+        padding: 5vw;
+    }
+}

@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    background-color: hsl(204, 43%, 93%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 640px;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 24px;
+    background-color: white;
+  }
+
+  .header h1 {
+    color: hsl(179, 62%, 43%);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .header h2 {
+    color: hsl(71, 73%, 54%);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .header p {
+    color: hsl(218, 22%, 67%);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .subscription {
+    background-color: hsl(179, 62%, 43%);
+    padding: 24px;
+    color: white;
+  }
+
+  .subscription h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 11px;
+  }
+
+  .price-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin-right: 11px;
+  }
+
+  .price-period {
+    color: hsl(204, 43%, 93%);
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .price-description {
+    margin-bottom: 26px;
+    font-size: 16px;
+  }
+
+  .btn {
+    width: 100%;
+    background-color: hsl(71, 73%, 54%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: hsl(71, 73%, 49%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .features {
+    background-color: hsl(179, 47%, 52%);
+    padding: 24px;
+    color: white;
+  }
+
+  .features h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .features ul {
+    list-style: none;
+  }
+
+  .features li {
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: hsl(204, 43%, 93%);
+  }
+
+  
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: hsl(218, 22%, 67%);
+  }
+
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+  }
+
+  .attribution a:hover {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 640px;
+    }
+
+    .header {
+      padding: 40px 40px 32px 40px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .header h2 {
+      font-size: 18px;
+      margin-bottom: 11px;
+    }
+
+    .header p {
+      font-size: 16px;
+      padding-right: 16px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .subscription {
+      padding: 40px;
+    }
+
+    .subscription h3 {
+      margin-bottom: 18px;
+    }
+
+    .features {
+      padding: 40px;
+    }
+
+    .features h3 {
+      margin-bottom: 18px;
+    }
+
+    .features li {
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+  }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="style.css"/>   
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+    <title>Base Apparel coming soon page</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/logo.svg" alt="BASE APPAREL">
+      </div>      
+    </header>
+
+    <!--main -->
+    <section class="hero" >
+      <div class="hero_img" ></div>
+      <div class="hero_content">        
+        <div class="heading">
+          <h1 >WE'RE</h1> <h2> COMING <br> SOON </h2>   
+        </div> 
+        <p> <br>
+          Hello fellow shoppers! We're currently building our new
+          fashion store. Add your email below to stay up-to-date with announcements
+          and our launch deals.
+        </p> <br>  
+        
+        <form onsubmit="validateForm(event)">
+          <input class="emailInput" id="email" type="email" placeholder="Email Address">
+          <div class="btn_container">
+            <div class="hidden" id="err_icn">     </div>   
+            
+            <label id="email_label">
+              <button class="emb_btn" id="emailSubmit" type="submit"><img src="images/icon-arrow.svg"></button>
+            </label>
+            
+            <div class="err" id="fb"></div>
+          </div>   
+        </form>
+
+      </div>
+    </section>
+
+    <footer>
+      <p class="attribution">
+        Bootcamp 2023 by
+        <a href="https://www.mlab.co.za" target="_blank">CodeTribe</a>.
+        Developed by <a href="https://github.com/DeLightPlus/CodeTribe">Kabelo Peter Matlakala</a>.
+      </p>
+    </footer>
+
+  <script src="index.js"></script>
+  </body>
+ 
+
+</html>
+
+<!-- Source Frontend Mentor: https://www.frontendmentor.io -->
