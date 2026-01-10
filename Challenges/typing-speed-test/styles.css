@@ -1,0 +1,515 @@
+/* CSS Variables */
+:root {
+    /* Neutral Colors */
+    --neutral-900: hsl(0, 0%, 7%);
+    --neutral-800: hsl(0, 0%, 15%);
+    --neutral-500: hsl(240, 3%, 46%);
+    --neutral-400: hsl(240, 1%, 59%);
+    --neutral-0: hsl(0, 0%, 100%);
+    
+    /* Blue */
+    --blue-600: hsl(214, 100%, 55%);
+    --blue-400: hsl(210, 100%, 65%);
+    
+    /* Red */
+    --red-500: hsl(354, 63%, 57%);
+    
+    /* Green */
+    --green-500: hsl(140, 63%, 57%);
+    
+    /* Yellow */
+    --yellow-400: hsl(49, 85%, 70%);
+  }
+  
+  /* Reset & Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--neutral-900);
+    color: var(--neutral-0);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    body {
+        padding: 1.5rem 4rem;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+  }
+  
+  /* Screen Management */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    padding: 1.5rem;
+    position: relative;
+  }
+  
+  .screen.active {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .header-left {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .logo-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--blue-400);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--neutral-0);
+  }
+  
+  .subtitle {
+    color: var(--neutral-400);
+    font-size: 0.875rem;
+    margin-left: 3.25rem;
+  }
+  
+  .personal-best {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    /* background-color: var(--neutral-800); */
+    padding: 0.5rem 0rem;
+    /* border-radius: 0.75rem; */
+  }
+
+  .pb-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .pb-label-desktop, .pb-label-mobile {
+    font-size: 0.75rem;
+    color: var(--neutral-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pb-label-desktop {
+    display: none;
+  }
+  
+  .pb-label-mobile {
+    display: block;
+  }
+
+  .pb-value {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--neutral-0);
+  }
+
+  @media (min-width: 768px) {
+    .pb-label-desktop {
+      display: block;
+    }
+    .pb-label-mobile {
+      display: none;
+    }
+  }
+
+  /* Stats Bar */
+  .stats-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+    /* background-color: var(--neutral-800); */
+    /* border-radius: 1rem; */
+    border-bottom: var(--neutral-800) 1px solid;
+  }
+
+  .bar-settings {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .bar-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-bar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--neutral-400);
+    font-size: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--neutral-0);
+  }
+  
+  .stat-red { color: var(--red-500); }
+  .stat-yellow { color: var(--yellow-400); }
+
+  .stat-divider {
+    color: var(--neutral-500);
+    font-size: 1.5rem;
+    opacity: 0.5;
+  }
+
+  /* Settings - Desktop Pills */
+  .settings-pills {
+    display: none;
+    align-items: center;
+    gap: 0.51rem;
+  }
+
+  .pills-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pills-label {
+    color: var(--neutral-400);
+    font-size: 1rem;
+  }
+
+  .pills-options {
+    display: flex;
+    /* background-color: var(--neutral-900); */
+    /* border-radius: 0.5rem; */
+    padding: 0.25rem;
+    gap: 0.5rem;
+  }
+
+  .pill-option {
+    background: transparent;
+    border: 1px solid var(--neutral-500);
+    color: var(--neutral-400);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .pill-option:hover {
+    color: var(--neutral-200);
+    border-color: var(--neutral-400);
+  }
+
+  .pill-option.active {
+    background-color: transparent;
+    color: var(--blue-400);
+    border-color: var(--blue-400);
+  }
+
+  /* Difficulty Specific Colors */
+  .pill-option[data-value="Easy"].active {
+    color: var(--green-500);
+    border-color: var(--green-500);
+  }
+
+  .pill-option[data-value="Medium"].active {
+    color: var(--yellow-400);
+    border-color: var(--yellow-400);
+  }
+
+  .pill-option[data-value="Hard"].active {
+    color: var(--red-500);
+    border-color: var(--red-500);
+  }
+
+  .pills-divider {
+    color: var(--neutral-500);
+    opacity: 0.5;
+    font-size: 1.5rem;
+  }
+
+  /* Settings - Mobile Dropdowns */
+  .settings-dropdowns {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .dropdown-wrapper {
+    flex: 1;
+  }
+
+  @media (min-width: 768px) {
+    .settings-pills {
+      display: flex;
+    }
+    .settings-dropdowns {
+      display: none;
+    }
+  }
+
+  .dropdown-label {
+    display: none; /* Hide labels for dropdowns as they are not in design */
+  }
+
+  .dropdown {
+    position: relative;
+    min-width: 0; /* Allow flex shrinking */
+  }
+
+  .dropdown-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--neutral-800);
+    border: 2px solid transparent;
+    border-radius: 0.75rem;
+    color: var(--neutral-0);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-button:hover,
+  .dropdown-button:focus {
+    border-color: var(--blue-400);
+    outline: none;
+  }
+  
+  .dropdown-button.selected {
+    border-color: var(--blue-400);
+  }
+  
+  .dropdown-arrow {
+    margin-left: 1rem;
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: var(--neutral-800);
+    border: 1px solid var(--neutral-800);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--neutral-900);
+  }
+  
+  .dropdown-item.active {
+    color: var(--blue-400);
+  }
+  
+  .radio-button {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--neutral-500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+  }
+  
+  .dropdown-item.active .radio-button {
+    border-color: var(--blue-400);
+  }
+  
+  .radio-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-item.active .radio-dot {
+    background-color: var(--blue-400);
+  }
+  
+  /* Content Center (Home Screen) */
+  .content-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* max-width: 56rem; */
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .passage-display {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: left;
+    color: var(--neutral-400);
+  }
+  
+  .passage-display.blurred {
+    filter: blur(8px);
+    user-select: none;
+  }
+  
+  .btn-primary {
+    position: absolute;
+    bottom: 50%;
+    padding: 1rem 2rem;
+    background-color: var(--blue-600);
+    color: var(--neutral-0);
+    border: none;
+    border-radius: 0.75rem;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--blue-400);
+    transform: scale(1.05);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+  
+  .helper-text {
+    position: absolute;
+    bottom: 45%;
+    margin-top: 1rem;
+    color: var(--neutral-400);
+    font-size: 1rem;
+  }
+  
+  /* Typing Screen */
+  .typing-area {
+    flex: 1;
+    max-width: 56rem;
+    margin: 0 auto 2rem auto;
+    width: 100%;
+  }
+  
+  .typing-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--neutral-500);
+  }
+
+/* Typing Game States */
+.typing-text span {
+  border-bottom: 2px solid transparent;
+}
+
+.typing-text span.correct {
+  color: var(--green-500);
+}
+
+.typing-text span.incorrect {
+  color: var(--red-500);
+  text-decoration: underline;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.typing-text span.active {
+  position: relative;
+}
+
+.typing-text span.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  height: 1.5em;
+  background-color: var(--yellow-400);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

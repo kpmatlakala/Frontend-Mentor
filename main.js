@@ -147,9 +147,9 @@
       });
       
       // Update stats
-      document.getElementById('total-count').textContent = totalProjects;
-      document.getElementById('completed-count').textContent = completedProjects;
-      document.getElementById('progress-count').textContent = inProgressProjects;
+      // document.getElementById('total-count').textContent = totalProjects;
+      // document.getElementById('completed-count').textContent = completedProjects;
+      // document.getElementById('progress-count').textContent = inProgressProjects;
       
       initAccordion();
     }

@@ -5,7 +5,7 @@ export function initAccordion() {
 
   accordionHeaders.forEach(header => {
     header.addEventListener('click', () => {
-      const accordionItem = header.parentElement;
+      const accordionItem = header.closest('.accordion-item');
       const isActive = accordionItem.classList.contains('active');
 
       // Close all

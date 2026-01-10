@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats Bar & Header Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables */
+    :root {
+        /* Neutral Colors */
+        --neutral-900: hsl(0, 0%, 7%);
+        --neutral-800: hsl(0, 0%, 15%);
+        --neutral-500: hsl(240, 3%, 46%);
+        --neutral-400: hsl(240, 1%, 59%);
+        --neutral-0: hsl(0, 0%, 100%);
+        
+        /* Blue */
+        --blue-600: hsl(214, 100%, 55%);
+        --blue-400: hsl(210, 100%, 65%);
+        
+        /* Red */
+        --red-500: hsl(354, 63%, 57%);
+        
+        /* Green */
+        --green-500: hsl(140, 63%, 57%);
+        
+        /* Yellow */
+        --yellow-400: hsl(49, 85%, 70%);
+    }
+  
+    /* Reset & Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+  
+    body {
+        font-family: 'Sora', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: var(--neutral-900);
+        color: var(--neutral-0);
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+  
+    .header-left {
+        flex: 1;
+        min-width: 250px;
+    }
+  
+    .logo-title {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+  
+    .logo {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: var(--blue-400);
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+  
+    h1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--neutral-0);
+    }
+  
+    .subtitle {
+        color: var(--neutral-400);
+        font-size: 0.875rem;
+        margin-left: 3.25rem;
+    }
+  
+    .personal-best {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background-color: var(--neutral-800);
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+    }
+
+    .pb-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .pb-label-desktop, .pb-label-mobile {
+        font-size: 0.75rem;
+        color: var(--neutral-400);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .pb-label-desktop {
+        display: none;
+    }
+    
+    .pb-label-mobile {
+        display: block;
+    }
+
+    .pb-value {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--neutral-0);
+    }
+
+    @media (min-width: 768px) {
+        .pb-label-desktop {
+            display: block;
+        }
+        .pb-label-mobile {
+            display: none;
+        }
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 1rem 1.5rem;
+        background-color: var(--neutral-800);
+        border-radius: 1rem;
+    }
+
+    .bar-settings {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .bar-stats {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .stats-bar {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .stat {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+    }
+
+    .stat-label {
+        color: var(--neutral-400);
+        font-size: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--neutral-0);
+    }
+    
+    .stat-red { color: var(--red-500); }
+    .stat-yellow { color: var(--yellow-400); }
+
+    .stat-divider {
+        color: var(--neutral-500);
+        font-size: 1.5rem;
+        opacity: 0.5;
+    }
+
+    /* Settings - Desktop Pills */
+    .settings-pills {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .pills-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .pills-label {
+        color: var(--neutral-400);
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .pills-options {
+        display: flex;
+        background-color: var(--neutral-900);
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+    }
+
+    .pill-option {
+        padding: 0.5rem 1rem;
+        border: none;
+        background: transparent;
+        color: var(--neutral-500);
+        font-family: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+    }
+
+    .pill-option:hover {
+        color: var(--neutral-0);
+    }
+
+    .pill-option.active {
+        background-color: var(--neutral-700);
+        color: var(--neutral-0);
+    }
+
+    .pills-divider {
+        color: var(--neutral-500);
+        font-size: 1.5rem;
+        opacity: 0.3;
+    }
+
+    /* Settings - Mobile Dropdowns */
+    .settings-dropdowns {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .dropdown-wrapper {
+        flex: 1;
+    }
+
+    @media (min-width: 768px) {
+        .settings-pills {
+            display: flex;
+        }
+        .settings-dropdowns {
+            display: none;
+        }
+    }
+
+    .dropdown-label {
+        display: none; /* Hide labels for dropdowns as they are not in design */
+    }
+
+    .dropdown {
+        position: relative;
+        min-width: 0; /* Allow flex shrinking */
+    }
+
+    .dropdown-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background-color: var(--neutral-800);
+        border: 2px solid transparent;
+        border-radius: 0.75rem;
+        color: var(--neutral-0);
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .dropdown-button:hover,
+    .dropdown-button:focus {
+        border-color: var(--blue-400);
+        outline: none;
+    }
+    
+    .dropdown-button.selected {
+        border-color: var(--blue-400);
+    }
+    
+    .dropdown-arrow {
+        margin-left: 1rem;
+        font-size: 0.75rem;
+        transition: transform 0.2s ease;
+    }
+    
+    .dropdown.open .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+    
+    .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background-color: var(--neutral-800);
+        border: 1px solid var(--neutral-800);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        z-index: 100;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    
+    .dropdown-item:hover {
+        background-color: var(--neutral-900);
+    }
+    
+    .dropdown-item.active {
+        color: var(--blue-400);
+    }
+    
+    .radio-button {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid var(--neutral-500);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s ease;
+    }
+    
+    .dropdown-item.active .radio-button {
+        border-color: var(--blue-400);
+    }
+    
+    .radio-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: background-color 0.2s ease;
+    }
+    
+    .dropdown-item.active .radio-dot {
+        background-color: var(--blue-400);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Component -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-title">
+        <!-- Note: Adjust paths as needed when using this component -->
+        <picture>
+          <source media="(min-width: 768px)" srcset="../../Challenges/typing-speed-test/assets/images/logo-large.svg">
+          <img src="../../Challenges/typing-speed-test/assets/images/logo-small.svg" alt="Typing Speed Test Logo">
+        </picture>
+      </div>
+      <p class="subtitle">Type as fast as you can in 60 seconds</p>
+    </div>
+    <div class="personal-best">
+      <img src="../../Challenges/typing-speed-test/assets/images/icon-personal-best.svg" alt="" class="pb-icon">
+      <span class="pb-label-desktop">Personal Best:</span>
+      <span class="pb-label-mobile">Best:</span>
+      <span class="pb-value"><span id="pb-display">92</span> WPM</span>
+    </div>
+  </header>
+
+  <!-- Stats Bar Component -->
+  <div class="stats-bar">
+    <div class="bar-stats">
+      <div class="stat">
+        <span class="stat-label">WPM:</span>
+        <span class="stat-value" id="wpm-home">0</span>
+      </div>
+      <div class="stat-divider">|</div>
+      <div class="stat">
+        <span class="stat-label">Accuracy:</span>
+        <span class="stat-value" id="accuracy-home">100%</span>
+      </div>
+      <div class="stat-divider">|</div>
+      <div class="stat">
+        <span class="stat-label">Time:</span>
+        <span class="stat-value" id="time-home">0:60</span>
+      </div>
+    </div>
+
+    <div class="bar-settings">
+      <!-- Desktop Pill Selectors -->
+      <div class="settings-pills">
+        <div class="pills-group" id="difficulty-pills">
+          <span class="pills-label">Difficulty:</span>
+          <div class="pills-options">
+            <button class="pill-option" data-value="Easy">Easy</button>
+            <button class="pill-option" data-value="Medium">Medium</button>
+            <button class="pill-option active" data-value="Hard">Hard</button>
+          </div>
+        </div>
+        <div class="pills-divider">|</div>
+        <div class="pills-group" id="mode-pills">
+          <span class="pills-label">Mode:</span>
+          <div class="pills-options">
+            <button class="pill-option active" data-value="Timed (60s)">Timed (60s)</button>
+            <button class="pill-option" data-value="Passage">Passage</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdowns -->
+      <div class="settings-dropdowns">
+        <div class="dropdown-wrapper">
+          <div class="dropdown" id="difficulty-dropdown">
+            <button class="dropdown-button" id="difficulty-button">
+              <span id="difficulty-selected">Hard</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-menu" id="difficulty-menu">
+              <div class="dropdown-item" data-value="Easy">Easy</div>
+              <div class="dropdown-item" data-value="Medium">Medium</div>
+              <div class="dropdown-item active" data-value="Hard">Hard</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrapper">
+          <div class="dropdown" id="mode-dropdown">
+            <button class="dropdown-button" id="mode-button">
+              <span id="mode-selected">Timed (60s)</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-menu" id="mode-menu">
+              <div class="dropdown-item active" data-value="Timed (60s)">Timed (60s)</div>
+              <div class="dropdown-item" data-value="Passage">Passage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <script>
+    // Minimal JS for Dropdown interactivity in component preview
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('.dropdown-button');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Close others
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) d.classList.remove('open');
+                });
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        document.addEventListener('click', () => {
+            dropdowns.forEach(d => d.classList.remove('open'));
+        });
+    });
+  </script>
+</body>
+</html>

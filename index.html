@@ -1,126 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kabelo P. Matlakala | Frontend Mentor Projects</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kabelo P. Matlakala | Frontend Mentor Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-  <div class="theme-toggle" id="theme-toggle">
-    <span class="theme-toggle-icon">🌙</span>
-  </div>
+  <body>
+    <header class="hero">
+      <nav class="hero-nav">
+        <span class="hero-name">Kabelo Matlakala</span>
 
-  <header>
-    <div class="header-content">
-      <!-- <div class="header-badge">Frontend Developer</div> -->
-      <h1>Kabelo P. Matlakala</h1>
-      <p class="header-subtitle">Building real-world projects through Frontend Mentor challenges, one component at a time</p>
-      
-      <div class="stats">
-        <div class="stat-item">
-          <span class="stat-value" style="color: var(--accent-purple)" id="total-count">0</span>
-          <span class="stat-label">Total Projects</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" style="color: var(--accent-emerald)" id="completed-count">0</span>
-          <span class="stat-label">Completed</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" style="color: var(--accent-orange)" id="progress-count">0</span>
-          <span class="stat-label">In Progress</span>
-        </div>
-      </div>
-    </div>
-  </header>
+        <div class="hero-actions">
+          <a href="#projects">Projects</a>
+          <a href="mailto:matlakalakabelo1@gmail.com">Contact</a>
 
-  <main>
-    <section>
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2>Frontend Mentor Challenges</h2>
-      </div>
-      
-      <div class="accordion" id="projects-accordion">
-        <!-- Accordion items will be injected here -->
-      </div>
-    </section>
+          <div class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon icon-moon" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+            </svg>
 
-    <section>
-      <div class="info-card">
-        <h2><span>🧰</span> Tech Stack</h2>
-        <div class="tech-grid">
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>HTML5 & CSS3</span>
-          </div>
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>JavaScript (ES6+)</span>
-          </div>
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>Responsive Design</span>
-          </div>
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>Accessibility</span>
-          </div>
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>Git & GitHub</span>
-          </div>
-          <div class="tech-item">
-            <span class="tech-check">✓</span>
-            <span>React & Tailwind</span>
+            <svg class="icon icon-sun" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <g>
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </g>
+            </svg>
           </div>
         </div>
-      </div>
-    </section>
+      </nav>
 
-    <div class="info-grid">
-      <div class="info-card">
-        <h2><span>📌</span> About Me</h2>
-        <p>
-          Hi! I'm <strong>Kabelo Peter Matlakala</strong>, a passionate web developer continuously improving by building real-world projects through platforms like Frontend Mentor. Each challenge helps me master new skills and best practices in modern web development.
+      <div class="hero-center">
+        <h1 class="hero-title">FRONTEND<br />MENTOR</h1>
+
+        <p class="hero-subtitle">
+          Personal challenge log — building, refining, and shipping real-world
+          UI components
         </p>
+
+        <div class="hero-links">
+          <a href="https://github.com/kabelomatlakala">GitHub</a>
+          <a href="#projects">Challenges</a>
+          <a href="https://www.frontendmentor.io/">Frontend Mentor</a>
+        </div>
       </div>
 
-      <div class="info-card">
-        <h2><span>🤝</span> Let's Connect</h2>
-        <ul>
-          <li>
-            <a href="https://github.com/kabelomatlakala" target="_blank">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-              </svg>
-              <span>GitHub Profile</span>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:matlakalakabelo1@gmail.com">
-              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              <span>matlakalakabelo1@gmail.com</span>
-            </a>
-          </li>
-        </ul>
+      <div class="hero-footer">
+        <span>Based in South Africa</span>
+        <!-- <span>HTML • CSS • JS • React</span> -->
       </div>
-    </div>
-  </main>
+    </header>
 
-  <footer>
-    <p>Made with <span style="color: var(--accent-red)">❤️</span> by Kabelo Peter Matlakala</p>
-  </footer>
+    <main>
+      <section>
+        <div class="section-header">
+          <div class="section-line"></div>
+          <h2>Frontend Mentor Challenges</h2>
+        </div>
 
-  <script src="/scripts/projects-data.js"></script>
-  <script src="/main.js">
-    
-  </script>
-</body>
+        <div class="accordion" id="projects-accordion">
+          <!-- Accordion items will be injected here -->
+        </div>
+      </section>
+
+      <section>
+        <div class="info-card">
+          <h2><span>🧰</span> Tech Stack</h2>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>HTML5 & CSS3</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>JavaScript (ES6+)</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>Responsive Design</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>Accessibility</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>Git & GitHub</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-check">✓</span>
+              <span>React & Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <div class="info-grid">
+        <div class="info-card">
+          <h2><span>📌</span> About Me</h2>
+          <p>
+            Hi! I'm <strong>Kabelo Peter Matlakala</strong>, a passionate web
+            developer continuously improving by building real-world projects
+            through platforms like Frontend Mentor. Each challenge helps me
+            master new skills and best practices in modern web development.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h2><span>🤝</span> Let's Connect</h2>
+          <ul>
+            <li>
+              <a href="https://github.com/kabelomatlakala" target="_blank">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                  />
+                </svg>
+                <span>GitHub Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:matlakalakabelo1@gmail.com">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <span>matlakalakabelo1@gmail.com</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <p>
+            <strong>Kabelo P. Matlakala</strong> — fullstack developer focused
+            on building and refining real-world UI through Frontend Mentor
+            challenges.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/kabelomatlakala" target="_blank"
+            >GitHub</a
+          >
+          <a href="#projects">Challenges</a>
+          <a href="https://www.frontendmentor.io/" target="_blank"
+            >Frontend Mentor</a
+          >
+          <a href="mailto:matlakalakabelo1@gmail.com">Email</a>
+        </div>
+
+        <div class="footer-meta">
+          <span>South Africa</span>
+          <span>© 2025</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/scripts/projects-data.js"></script>
+    <script src="/main.js"></script>
+  </body>
 </html>

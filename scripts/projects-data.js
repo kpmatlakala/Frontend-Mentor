@@ -119,6 +119,16 @@ const projectsData = {
       hackathonName: "FM30 Hackathon 2025",
     },
     {
+      title: "Typing Speed Test",
+      imageUrl: "/assets/previews/challenges/typing-speed-test-preview.jpg",
+      description:
+        "A typing speed test game with real-time feedback and scoring.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      level: 1,
+      demoUrl: "/Challenges/typing-speed-test/",
+    },
+
+    {
       title: "NFT preview card component",
       imageUrl: "/assets/previews/challenges/nft-preview.jpg",
       description:
@@ -187,9 +197,10 @@ const projectsData = {
       technologies: ["HTML", "CSS"],
       level: 1,
       demoUrl: "/Challenges/3-column-preview-card-component/",
-      //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-      gitRepoLink: "https://github.com/kpmatlakala/Frontend-Mentor/tree/3-column-preview-card-component",
-      isGhost: true,
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/3-column-preview-card-component-using-html-and-css-hGxP7GF6WW",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/3-column-preview-card-component",
     },
     {
       title: "Stats Preview Card Component",
@@ -198,9 +209,10 @@ const projectsData = {
       technologies: ["HTML", "CSS"],
       level: 1,
       demoUrl: "/Challenges/stats-preview-card-component/",
-      //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-      gitRepoLink: "https://github.com/kpmatlakala/Frontend-Mentor/tree/stats-preview-card-component",
-      isGhost: true,
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/stats-preview-card-component-using-html-and-css-ISVKukYr0i",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/stats-preview-card-component",
     },
     {
       title: "Results Summary Component",
@@ -210,10 +222,11 @@ const projectsData = {
       level: 1,
       demoUrl: "/Challenges/results-summary-component/",
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-      gitRepoLink: "https://github.com/kpmatlakala/Frontend-Mentor/tree/results-summary-component",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/results-summary-component",
       isGhost: true,
     },
-     {
+    {
       title: "Order Summary Component",
       imageUrl: "/assets/previews/challenges/order-summary-preview.jpg",
       description: "",
@@ -221,7 +234,8 @@ const projectsData = {
       level: 1,
       demoUrl: "/Challenges/order-summary-component/",
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-      gitRepoLink: "https://github.com/kpmatlakala/Frontend-Mentor/tree/order-summary-component",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/order-summary-component",
       isGhost: true,
     },
     // {
