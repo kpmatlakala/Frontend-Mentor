@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         goAgain: document.getElementById('go-again-button')
     };
 
+    const passageDisplay = document.getElementById('passage-home');
+    
     const resultDisplays = {
         wpm: document.getElementById('result-wpm'),
         accuracy: document.getElementById('result-accuracy'),
@@ -19,6 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
         incorrect: document.getElementById('result-incorrect')
     };
 
+    // Home stat displays
+    const wpmHomeDisplay = document.getElementById('wpm-display');
+    const accuracyHomeDisplay = document.getElementById('accuracy-display');
+    const timeHomeDisplay = document.getElementById('time-display');
+    
+    // Typing stat displays
+    const wpmTypingDisplay = document.getElementById('wpm-typing');
+    const accuracyTypingDisplay = document.getElementById('accuracy-typing');
+    const timeTypingDisplay = document.getElementById('time-typing');
+    
+    // Dropdowns (<1060px) - Home Screen
     const dropdowns = {
         difficulty: {
             container: document.getElementById('difficulty-dropdown'),
@@ -36,36 +49,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const pills = {
+    // Dropdowns - Typing Screen
+    const typingDropdowns = {
         difficulty: {
-            group: document.getElementById('difficulty-pills'),
-            options: document.querySelectorAll('#difficulty-pills .pill-option')
+            container: document.getElementById('typing-difficulty-dropdown'),
+            button: document.getElementById('typing-difficulty-button'),
+            selected: document.getElementById('typing-difficulty-selected'),
+            menu: document.getElementById('typing-difficulty-menu'),
+            items: document.querySelectorAll('#typing-difficulty-menu .dropdown-item')
         },
         mode: {
-            group: document.getElementById('mode-pills'),
-            options: document.querySelectorAll('#mode-pills .pill-option')
+            container: document.getElementById('typing-mode-dropdown'),
+            button: document.getElementById('typing-mode-button'),
+            selected: document.getElementById('typing-mode-selected'),
+            menu: document.getElementById('typing-mode-menu'),
+            items: document.querySelectorAll('#typing-mode-menu .dropdown-item')
+        }
+    };
+
+    // Desktop buttons (≥1060px) - Home Screen
+    const buttonGroups = {
+        difficulty: {
+            options: document.querySelectorAll('#difficulty-buttons .button-option')
+        },
+        mode: {
+            options: document.querySelectorAll('#mode-buttons .button-option')
+        }
+    };
+
+    // Desktop buttons - Typing Screen
+    const typingButtonGroups = {
+        difficulty: {
+            options: document.querySelectorAll('#typing-difficulty-buttons .button-option')
+        },
+        mode: {
+            options: document.querySelectorAll('#typing-mode-buttons .button-option')
         }
     };
 
     const typingTextDisplay = document.getElementById('typing-text');
-    const wpmDisplays = {
-        home: document.getElementById('wpm-home'),
-        typing: document.getElementById('wpm-typing'),
-        results: document.getElementById('pb-display-results')
-    };
-    const accuracyDisplays = {
-        home: document.getElementById('accuracy-home'),
-        typing: document.getElementById('accuracy-typing'),
-        // results might need one if added to HTML
-    };
-    const timeDisplays = {
-        home: document.getElementById('time-home'),
-        typing: document.getElementById('time-typing')
+    
+    // Text data
+    const textData = {
+        easy: [
+            "The sun rose over the quiet town. Birds sang in the trees as people woke up and started their day. It was going to be a warm and sunny morning.",
+            "She walked to the store to buy some bread and milk. The shop was busy but she found what she needed quickly.",
+            "The dog ran across the park chasing a ball. He was fast and loved to play."
+        ],
+        medium: [
+            "Learning a new skill takes patience and consistent practice. Whether you're studying a language, picking up an instrument, or mastering a sport, the key is to show up every day.",
+            "The old lighthouse had stood on the cliff for over a century, guiding sailors safely through treacherous waters.",
+            "Coffee culture has evolved dramatically in recent decades. What was once a simple morning ritual has become an art form."
+        ],
+        hard: [
+            "The philosopher's argument hinged on a seemingly paradoxical assertion: that absolute freedom, pursued without constraint, inevitably undermines itself.",
+            "Quantum entanglement—Einstein's \"spooky action at a distance\"—continues to perplex physicists and philosophers alike.",
+            "The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial connections far more extensive than previously hypothesized."
+        ]
     };
     
     // State
     let state = {
-        screen: 'home', // 'home', 'typing', 'results'
+        screen: 'home',
         difficulty: 'Hard',
         mode: 'Timed (60s)',
         wpm: 0,
@@ -75,8 +120,132 @@ document.addEventListener('DOMContentLoaded', () => {
         timer: null,
         charIndex: 0,
         mistakes: 0,
-        totalTyped: 0
+        totalTyped: 0,
+        currentText: ""
     };
+
+    // Load personal best from localStorage
+    function loadPersonalBest() {
+        const savedPB = localStorage.getItem('typingSpeedPB');
+        const pb = savedPB ? parseInt(savedPB) : 0;
+        const pbDisplay = document.getElementById('pb-display');
+        if (pbDisplay) {
+            pbDisplay.textContent = pb;
+        }
+        return pb;
+    }
+
+    // Save personal best to localStorage
+    function savePersonalBest(wpm) {
+        const currentPB = loadPersonalBest();
+        if (wpm > currentPB) {
+            localStorage.setItem('typingSpeedPB', wpm.toString());
+            const pbDisplay = document.getElementById('pb-display');
+            if (pbDisplay) {
+                pbDisplay.textContent = wpm;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Check if this is the first test
+    function isFirstTest() {
+        return !localStorage.getItem('typingSpeedPB');
+    }
+
+    // Get random text based on difficulty
+    function getRandomText(difficulty) {
+        const texts = textData[difficulty.toLowerCase()] || textData.hard;
+        return texts[Math.floor(Math.random() * texts.length)];
+    }
+
+    // Update passage display on home screen
+    function updatePassageDisplay() {
+        state.currentText = getRandomText(state.difficulty);
+        passageDisplay.textContent = state.currentText;
+    }
+
+    // Update all UI elements for a setting
+    function updateAllUI(key, value) {
+        state[key] = value;
+        
+        // Update Home Screen Dropdown
+        const dropdown = dropdowns[key];
+        if (dropdown) {
+            dropdown.selected.textContent = value;
+            dropdown.items.forEach(i => {
+                if (i.getAttribute('data-value') === value) {
+                    i.classList.add('active');
+                } else {
+                    i.classList.remove('active');
+                }
+            });
+        }
+        
+        // Update Home Screen Buttons
+        const btns = buttonGroups[key];
+        if (btns) {
+            btns.options.forEach(opt => {
+                if (opt.getAttribute('data-value') === value) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        // Update Typing Screen Dropdown
+        const typingDropdown = typingDropdowns[key];
+        if (typingDropdown) {
+            typingDropdown.selected.textContent = value;
+            typingDropdown.items.forEach(i => {
+                if (i.getAttribute('data-value') === value) {
+                    i.classList.add('active');
+                } else {
+                    i.classList.remove('active');
+                }
+            });
+        }
+        
+        // Update Typing Screen Buttons
+        const typingBtns = typingButtonGroups[key];
+        if (typingBtns) {
+            typingBtns.options.forEach(opt => {
+                if (opt.getAttribute('data-value') === value) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        if (key === 'difficulty') {
+            updatePassageDisplay();
+        }
+    }
+
+    // Update home stat displays
+    function updateHomeStatsDisplay() {
+        wpmHomeDisplay.textContent = state.wpm;
+        accuracyHomeDisplay.textContent = `${state.accuracy}%`;
+        const minutes = Math.floor(state.timeLeft / 60);
+        const seconds = state.timeLeft % 60;
+        timeHomeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    // Update typing stat displays
+    function updateTypingStatsDisplay() {
+        wpmTypingDisplay.textContent = state.wpm;
+        accuracyTypingDisplay.textContent = `${state.accuracy}%`;
+        const minutes = Math.floor(state.timeLeft / 60);
+        const seconds = state.timeLeft % 60;
+        timeTypingDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    // Initialize
+    loadPersonalBest();
+    updatePassageDisplay();
 
     // Hidden Input for Typing
     const inputField = document.createElement('input');
@@ -86,14 +255,12 @@ document.addEventListener('DOMContentLoaded', () => {
     inputField.style.zIndex = '-1';
     document.body.appendChild(inputField);
 
-    // Navigation Functions
+    // Screen Navigation
     function switchScreen(screenName) {
-        // Hide all screens
         Object.values(screens).forEach(screen => {
             screen.classList.remove('active');
         });
 
-        // Show target screen
         if (screens[screenName]) {
             screens[screenName].classList.add('active');
             state.screen = screenName;
@@ -102,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (screenName === 'typing') {
             inputField.value = '';
             inputField.focus();
-            // Ensure focus stays
             document.addEventListener('click', focusInput);
         } else {
             document.removeEventListener('click', focusInput);
@@ -111,48 +277,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function focusInput(e) {
-        // Prevent focusing if clicking buttons
         if (e.target.closest('button') || e.target.closest('.dropdown')) return;
         if (state.screen === 'typing') {
             inputField.focus();
         }
     }
 
-    // State Management Functions
-    function updateSetting(key, value) {
-        state[key] = value;
-        
-        // Update Dropdown UI
-        const dropdown = dropdowns[key];
-        dropdown.selected.textContent = value;
-        dropdown.items.forEach(i => {
-            if (i.getAttribute('data-value') === value) {
-                i.classList.add('active');
-            } else {
-                i.classList.remove('active');
-            }
-        });
-
-        // Update Pill UI
-        const pillGroup = pills[key];
-        pillGroup.options.forEach(opt => {
-            if (opt.getAttribute('data-value') === value) {
-                opt.classList.add('active');
-            } else {
-                opt.classList.remove('active');
-            }
-        });
-    }
-
-    // Dropdown Functions
+    // Dropdown Setup - Home Screen
     function setupDropdown(dropdownKey) {
         const dropdown = dropdowns[dropdownKey];
+        if (!dropdown) return;
         
         dropdown.button.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Close other dropdowns
             Object.keys(dropdowns).forEach(key => {
-                if (key !== dropdownKey) {
+                if (key !== dropdownKey && dropdowns[key]) {
                     dropdowns[key].container.classList.remove('open');
                 }
             });
@@ -162,19 +301,58 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdown.items.forEach(item => {
             item.addEventListener('click', () => {
                 const value = item.getAttribute('data-value');
-                updateSetting(dropdownKey, value);
+                updateAllUI(dropdownKey, value);
                 dropdown.container.classList.remove('open');
             });
         });
     }
 
-    // Pill Functions
-    function setupPills(pillKey) {
-        const pillGroup = pills[pillKey];
-        pillGroup.options.forEach(option => {
+    // Dropdown Setup - Typing Screen
+    function setupTypingDropdown(dropdownKey) {
+        const dropdown = typingDropdowns[dropdownKey];
+        if (!dropdown) return;
+        
+        dropdown.button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            Object.keys(typingDropdowns).forEach(key => {
+                if (key !== dropdownKey && typingDropdowns[key]) {
+                    typingDropdowns[key].container.classList.remove('open');
+                }
+            });
+            dropdown.container.classList.toggle('open');
+        });
+
+        dropdown.items.forEach(item => {
+            item.addEventListener('click', () => {
+                const value = item.getAttribute('data-value');
+                updateAllUI(dropdownKey, value);
+                dropdown.container.classList.remove('open');
+            });
+        });
+    }
+
+    // Button Setup - Home Screen
+    function setupButtons(buttonKey) {
+        const btns = buttonGroups[buttonKey];
+        if (!btns) return;
+        
+        btns.options.forEach(option => {
             option.addEventListener('click', () => {
                 const value = option.getAttribute('data-value');
-                updateSetting(pillKey, value);
+                updateAllUI(buttonKey, value);
+            });
+        });
+    }
+
+    // Button Setup - Typing Screen
+    function setupTypingButtons(buttonKey) {
+        const btns = typingButtonGroups[buttonKey];
+        if (!btns) return;
+        
+        btns.options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-value');
+                updateAllUI(buttonKey, value);
             });
         });
     }
@@ -198,60 +376,159 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Click on passage to start
+    passageDisplay.addEventListener('click', () => {
+        if (state.screen === 'home') {
+            buttons.start.click();
+        }
+    });
+
     // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
         Object.values(dropdowns).forEach(dropdown => {
-            if (!dropdown.container.contains(e.target)) {
+            if (dropdown && !dropdown.container.contains(e.target)) {
+                dropdown.container.classList.remove('open');
+            }
+        });
+        Object.values(typingDropdowns).forEach(dropdown => {
+            if (dropdown && !dropdown.container.contains(e.target)) {
                 dropdown.container.classList.remove('open');
             }
         });
     });
 
-    // Initialize
+    // Initialize controls - Home Screen
     setupDropdown('difficulty');
     setupDropdown('mode');
-    setupPills('difficulty');
-    setupPills('mode');
+    setupButtons('difficulty');
+    setupButtons('mode');
 
-    // Test Logic
+    // Initialize controls - Typing Screen
+    setupTypingDropdown('difficulty');
+    setupTypingDropdown('mode');
+    setupTypingButtons('difficulty');
+    setupTypingButtons('mode');
+
+    // Timer
     function startTimer() {
         if (state.timer) return;
         state.timer = setInterval(() => {
             if (state.timeLeft > 0) {
                 state.timeLeft--;
-                updateTimerDisplay();
-                updateStats(); // Update WPM in real-time
+                updateTypingStatsDisplay();
+                updateStats();
             } else {
                 endTest();
             }
         }, 1000);
     }
 
-    function updateTimerDisplay() {
-        const timeStr = `0:${state.timeLeft.toString().padStart(2, '0')}`;
-        timeDisplays.typing.textContent = timeStr;
+    // Create confetti effect
+    function createConfetti() {
+        const container = document.getElementById('confetti-container');
+        container.innerHTML = '';
+        
+        const colors = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
+        const confettiCount = 50;
+        
+        for (let i = 0; i < confettiCount; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: ${colors[Math.floor(Math.random() * colors.length)]};
+                left: ${Math.random() * 100}%;
+                top: -20px;
+                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                animation: confetti-fall ${2 + Math.random() * 2}s linear forwards;
+                animation-delay: ${Math.random() * 0.5}s;
+            `;
+            container.appendChild(confetti);
+        }
+        
+        // Add confetti animation style
+        if (!document.getElementById('confetti-style')) {
+            const style = document.createElement('style');
+            style.id = 'confetti-style';
+            style.textContent = `
+                @keyframes confetti-fall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Clear confetti after animation
+        setTimeout(() => {
+            container.innerHTML = '';
+        }, 4000);
     }
 
+    // End Test - Transition to Results Screen
     function endTest() {
         clearInterval(state.timer);
         state.timer = null;
         state.isPlaying = false;
         inputField.blur();
         
-        // Show results
+        // Switch to results screen
         switchScreen('results');
-        wpmDisplays.results.textContent = state.wpm;
         
+        // Determine result type
+        const firstTest = isFirstTest();
+        const isNewPB = savePersonalBest(state.wpm);
+        
+        // Update results display
         if (resultDisplays.wpm) resultDisplays.wpm.textContent = state.wpm;
         if (resultDisplays.accuracy) resultDisplays.accuracy.textContent = `${state.accuracy}%`;
         if (resultDisplays.correct) resultDisplays.correct.textContent = state.charIndex - state.mistakes;
         if (resultDisplays.incorrect) resultDisplays.incorrect.textContent = state.mistakes;
         
-        // Update Personal Best (Local Storage could be used here)
-        // For now just update if higher
-        const currentPB = parseInt(document.getElementById('pb-display').textContent) || 0;
-        if (state.wpm > currentPB) {
-            document.querySelectorAll('.pb-value span').forEach(el => el.textContent = state.wpm);
+        // Update result display based on type
+        updateResultDisplay(firstTest, isNewPB);
+    }
+
+    function updateResultDisplay(firstTest, isNewPB) {
+        const iconInner = document.getElementById('icon-inner');
+        const resultTitle = document.getElementById('result-title');
+        const resultSubtitle = document.getElementById('result-subtitle');
+        const ctaText = document.getElementById('cta-text');
+        const resultScreen = document.getElementById('results-screen');
+        
+        // Reset classes
+        resultScreen.classList.remove('new-pb');
+        
+        // Clear icon
+        iconInner.innerHTML = '<img src="./assets/images/icon-completed.svg" alt="Completed" id="result-check-icon">';
+        
+        if (isNewPB && !firstTest) {
+            // New Personal Best
+            resultScreen.classList.add('new-pb');
+            iconInner.innerHTML = '<img src="./assets/images/icon-new-pb.svg" alt="New Personal Best" id="result-check-icon">';
+            resultTitle.textContent = 'New Personal Best!';
+            resultSubtitle.textContent = "You're getting faster. That was incredible typing.";
+            ctaText.textContent = 'Beat This Score';
+            createConfetti();
+        } else if (firstTest) {
+            // First Test
+            iconInner.innerHTML = '<img src="./assets/images/icon-completed.svg" alt="Completed" id="result-check-icon">';
+            resultTitle.textContent = 'Test Complete!';
+            resultSubtitle.textContent = "You've set the bar. Now the real challenge begins—time to beat it.";
+            ctaText.textContent = 'Beat This Score';
+        } else {
+            // Regular result
+            iconInner.innerHTML = '<img src="./assets/images/icon-completed.svg" alt="Completed" id="result-check-icon">';
+            resultTitle.textContent = 'Test Complete!';
+            resultSubtitle.textContent = "Solid run. Keep pushing to beat your high score.";
+            ctaText.textContent = 'Go Again';
         }
     }
 
@@ -259,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(state.timer);
         state.timer = null;
         state.isPlaying = false;
-        state.timeLeft = 60; // Reset based on mode if implemented
+        state.timeLeft = 60;
         state.charIndex = 0;
         state.mistakes = 0;
         state.totalTyped = 0;
@@ -267,14 +544,13 @@ document.addEventListener('DOMContentLoaded', () => {
         state.accuracy = 100;
         inputField.value = '';
         
-        updateTimerDisplay();
-        wpmDisplays.typing.textContent = '0';
-        accuracyDisplays.typing.textContent = '100%';
+        updateHomeStatsDisplay();
+        updateTypingStatsDisplay();
+        updatePassageDisplay();
     }
 
     function loadText() {
-        // Sample text
-        const text = "The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial connections far more extensive than previously hypothesized.";
+        const text = state.currentText;
         
         typingTextDisplay.innerHTML = "";
         text.split("").forEach(char => {
@@ -283,36 +559,25 @@ document.addEventListener('DOMContentLoaded', () => {
             typingTextDisplay.appendChild(span);
         });
         
-        // Activate first character
-        typingTextDisplay.querySelector("span").classList.add("active");
+        if (typingTextDisplay.firstChild) {
+            typingTextDisplay.firstChild.classList.add("active");
+        }
     }
 
     function updateStats() {
-        // Calculate WPM
-        // Standard WPM = (all typed / 5) / (time elapsed in minutes)
-        // But here we might want (correct chars / 5) / (time elapsed)
-        // Or (total chars - mistakes) / 5 / time
-        
         const timeElapsed = 60 - state.timeLeft;
         if (timeElapsed > 0) {
-            // WPM = (Total characters typed / 5) / (Time in minutes)
-            // Frontend Mentor usually counts correct words or characters?
-            // Let's use (Correct Chars / 5) / Time
             const correctChars = state.charIndex - state.mistakes;
             const wpm = Math.round(((correctChars / 5) / timeElapsed) * 60);
             state.wpm = wpm < 0 || !isFinite(wpm) ? 0 : wpm;
             
-            // Accuracy
-            // (Correct / Total Typed) * 100
-            // Total typed is charIndex (attempts)
             const accuracy = state.charIndex > 0 
                 ? Math.round(((state.charIndex - state.mistakes) / state.charIndex) * 100) 
                 : 100;
             state.accuracy = accuracy;
         }
 
-        wpmDisplays.typing.textContent = state.wpm;
-        accuracyDisplays.typing.textContent = `${state.accuracy}%`;
+        updateTypingStatsDisplay();
     }
 
     // Input Handling
@@ -327,36 +592,27 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer();
         }
 
-        // If user deleted everything (unlikely but possible)
         if (typedValue.length < state.charIndex) {
-            // Backspace handled implicitly by iterating up to new length
-            // We need to clear classes for characters beyond new length
             for (let i = typedValue.length; i < state.charIndex; i++) {
                 if (i < characters.length) {
-                    characters[i].className = ''; // Reset class
+                    characters[i].className = '';
                 }
             }
             state.charIndex = typedValue.length;
-            // Recalculate mistakes
             let currentMistakes = 0;
             for (let i = 0; i < state.charIndex; i++) {
-                 if (characters[i].classList.contains('incorrect')) currentMistakes++;
+                if (characters[i] && characters[i].classList.contains('incorrect')) currentMistakes++;
             }
             state.mistakes = currentMistakes;
         }
 
         state.charIndex = typedValue.length;
 
-        if (state.charIndex > characters.length) {
-            // End of text
+        if (state.charIndex >= characters.length) {
             endTest();
             return;
         }
 
-        // Check current character
-        // We only need to check the last character typed if it's an addition
-        // But full iteration is safer for copy-paste or fast typing
-        
         let currentMistakes = 0;
         characters.forEach((span, index) => {
             if (index < typedValue.length) {
@@ -381,4 +637,16 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStats();
     });
 
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            Object.values(dropdowns).forEach(dropdown => {
+                if (dropdown) dropdown.container.classList.remove('open');
+            });
+            Object.values(typingDropdowns).forEach(dropdown => {
+                if (dropdown) dropdown.container.classList.remove('open');
+            });
+        }
+    });
 });
+

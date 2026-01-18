@@ -121,10 +121,9 @@ const projectsData = {
     {
       title: "Typing Speed Test",
       imageUrl: "/assets/previews/challenges/typing-speed-test-preview.jpg",
-      description:
-        "A typing speed test game with real-time feedback and scoring.",
+      description: "A typing speed test  that calculates words per minute (WPM) and accuracy. A fun project to practice DOM manipulation and working with timers.",
       technologies: ["HTML", "CSS", "JavaScript"],
-      level: 1,
+      level: 2,
       demoUrl: "/Challenges/typing-speed-test/",
     },
 
