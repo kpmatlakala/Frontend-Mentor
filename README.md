@@ -82,8 +82,9 @@ As mentioned above, there are many ways to host your project for free. Our recom
 ## Author
 
 - Website - [Kabelo P. Matlakala](https://kabelomatlakala.dev)
-- Frontend Mentor - [@kabelomatlakala](https://www.frontendmentor.io/profile/kabelomatlakala)
-- GitHub - [@kabelomatlakala](https://github.com/kabelomatlakala)
+- Frontend Mentor - [@kpmatlakala](https://www.frontendmentor.io/profile/kpmatlakala)
+- GitHub - [@kpmatlakala](https://github.com/kpmatlakala)
+- Email - [matlakalakabelo1@gmail.com](mailto:matlakalakabelo1@gmail.com)
 
 ## Got feedback for us?
 
