@@ -103,6 +103,7 @@
       const categories = [
         { key: 'Getting Started', icon: '🚀' },
         { key: 'Responsive Design Fundamentals', icon: '📱' },
+        { key: 'JavaScript Fundamentals', icon: '🌐' },
         { key: 'Challenges', icon: '⚡' }
       ];
       

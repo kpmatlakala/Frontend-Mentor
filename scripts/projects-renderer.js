@@ -62,7 +62,7 @@ function createProjectCard(project) {
 }
 
 export function renderProjects() {
-  const categories = ['Getting Started', 'Responsive Design Fundamentals', 'Challenges'];
+  const categories = ['Getting Started', 'Responsive Design Fundamentals', 'JavaScript Fundamentals', 'Challenges'];
 
   categories.forEach((category, index) => {
     const section = document.querySelectorAll('.accordion-item')[index]?.querySelector('.projects');

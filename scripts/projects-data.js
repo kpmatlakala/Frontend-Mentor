@@ -102,6 +102,20 @@ const projectsData = {
     //   comingSoon: true
     // }
   ],
+  "JavaScript Fundamentals": [
+    {
+      title: "Article Preview Component",
+      imageUrl: "/assets/previews/js-fundamentals/article-preview.jpg",
+      description: "Article preview component with hover effects and image overlay.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      level: 1,
+      demoUrl: "/JavaScript_Fundamentals/article-preview-component/",
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/article-preview-component-using-html-and-css-and-js-D7P-o6wK26",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/article-preview-component",
+    },
+  ],
   Challenges: [
     {
       title: "Weather App",
@@ -223,7 +237,7 @@ const projectsData = {
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/results-summary-component",
-      isGhost: true,
+      
     },
     {
       title: "Order Summary Component",
@@ -235,7 +249,7 @@ const projectsData = {
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/order-summary-component",
-      isGhost: true,
+
     },
     // {
     //   title: 'Intro Component with Signup Page',
