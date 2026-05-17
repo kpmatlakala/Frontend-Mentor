@@ -38,9 +38,9 @@ body {
 
 /* CARD */
 .card {
-  background-color: var(--white);
+  background-color: var(--white);  
+  position: relative;
   border-radius: var(--radius-lg);
-  overflow: hidden;
   box-shadow: var(--shadow);
 }
 
@@ -53,7 +53,8 @@ body {
 
 /* CONTENT */
 .card-content {
-  padding: 2rem;
+  padding: 2rem 0.75rem 0.75rem;
+  
 }
 
 /* TEXT */
@@ -80,7 +81,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
+
 
 /* AUTHOR */
 .author {
@@ -136,6 +139,68 @@ body {
   filter: brightness(0) invert(1);
 }
 
+
+
+/* SHARE POPUP */
+.share-popup {
+  display: none;
+
+  position: absolute;
+
+  right: -3rem;
+  bottom: 6rem;
+
+  background-color: var(--very-dark-grayish-blue);
+  
+  padding: 1.5rem 2rem;  
+
+  align-items: center;
+  gap: 1rem;
+}
+
+.share-popup span {
+  color: var(--grayish-blue);
+
+  letter-spacing: 0.3rem;
+  font-size: 0.75rem;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ACTIVE STATE */
+.share-popup.active {
+  display: flex;
+  padding: 1.5rem 3rem;
+  border-radius: var(--radius-lg);
+}
+
+
+/* SMALL TRIANGLE */
+.share-popup::after {
+  z-index: 10;
+  content: "";
+
+  position: absolute;
+
+  bottom: -10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-width: 10px;
+  border-style: solid;
+
+  border-color:
+    var(--very-dark-grayish-blue)
+    transparent
+    transparent
+    transparent;
+}
+
 /* DESKTOP LAYOUT */
 @media (min-width: 768px) {
   .container {
@@ -171,5 +236,38 @@ body {
   .text-content p {
     font-size: 1.2rem;
     margin: 1.5rem 0;
+  }
+
+  .share-popup{
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-image img{
+    border-top-right-radius: var(--radius-lg);
+    border-top-left-radius: var(--radius-lg);
+  }
+
+  .card-footer {
+    overflow: hidden;
+  }
+
+  .share-popup.active {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .share-popup::after {
+    display: none;
+  }
+
+  .share-btn {
+    position: relative;
+    z-index: 2;
   }
 }
