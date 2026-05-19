@@ -140,7 +140,6 @@ const projectsData = {
       level: 2,
       demoUrl: "/Challenges/typing-speed-test/",
     },
-
     {
       title: "NFT preview card component",
       imageUrl: "/assets/previews/challenges/nft-preview.jpg",
@@ -251,18 +250,16 @@ const projectsData = {
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/order-summary-component",
 
     },
-    // {
-    //   title: 'Intro Component with Signup Page',
-    //   imageUrl: '/assets/previews/challenges/signup-intro-preview',
-    //   description: 'Responsive signup form with real-time validation and error handling.',
-    //   technologies: ['HTML', 'CSS', 'JavaScript'],
-    //   level: 1,
-    //   isGhost: true,
-    //   comingSoon: true,
-    //   demoUrl: '/Challenges/intro-component-with-signup-form/',
-    //   //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
-    //   // gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/intro-component-with-signup-form'
-    // },
+    {
+      title: 'Profile Card Component',
+      imageUrl: '/assets/previews/challenges/profile-card-component',
+      description: 'Profile card component ',
+      technologies: ['HTML', 'CSS'],
+      level: 1,
+      demoUrl: '/Challenges/profile-card-component/',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/profile-card-component-using-html-and-css-rALr5ajb5Y',
+      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/profile-card-component'
+    },
     // {
     //   title: 'Intro Component with Signup Page',
     //   imageUrl: '/assets/previews/challenges/signup-intro-preview',
