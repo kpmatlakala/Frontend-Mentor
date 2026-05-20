@@ -252,7 +252,7 @@ const projectsData = {
     },
     {
       title: 'Profile Card Component',
-      imageUrl: '/assets/previews/challenges/profile-card-component',
+      imageUrl: '/assets/previews/challenges/profile-card-preview.jpg',
       description: 'Profile card component ',
       technologies: ['HTML', 'CSS'],
       level: 1,
@@ -260,7 +260,17 @@ const projectsData = {
       feSolutionLink: 'https://www.frontendmentor.io/solutions/profile-card-component-using-html-and-css-rALr5ajb5Y',
       gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/profile-card-component'
     },
-    // {
+    {
+      title: 'Single price grid component',
+      imageUrl: '/assets/previews/challenges/single-price-preview.jpg',
+      description: 'Single price grid component',
+      technologies: ['HTML', 'CSS',],
+      level: 1,      
+      demoUrl: '/Challenges/single-price-grid-component/',
+      feSolutionLink: 'https://www.frontendmentor.io/solutions/single-price-grid-component-IaMx0Vkmk2',
+      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/single-price-grid-component'
+    },
+     // {
     //   title: 'Intro Component with Signup Page',
     //   imageUrl: '/assets/previews/challenges/signup-intro-preview',
     //   description: 'Responsive signup form with real-time validation and error handling.',
