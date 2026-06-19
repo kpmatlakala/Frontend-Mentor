@@ -109,14 +109,26 @@ const projectsData = {
       description: "Article preview component with hover effects and image overlay.",
       technologies: ["HTML", "CSS", "JavaScript"],
       level: 1,
-      demoUrl: "/JavaScript_Fundamentals/article-preview-component/",
+      demoUrl: "/Javascript_Fundamentals/article-preview-component/",
       feSolutionLink:
-        "https://www.frontendmentor.io/solutions/article-preview-component-using-html-and-css-and-js-D7P-o6wK26",
+        "https://www.frontendmentor.io/solutions/article-preview-component-using-html-css-and-javascript-yU449JlsvU",
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/article-preview-component",
     },
+    {
+      title: "Newsletter Sign-up",
+      imageUrl: "/assets/previews/js-fundamentals/newsletter-preview.jpg",
+      description: "Newsletter Sign-up with success message.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      level: 1,
+      demoUrl: "/Javascript_Fundamentals/newsletter-sign-up-with-success-message/",
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/newsletter-sign-up-with-success-message-",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/newsletter-sign-up-with-success-message",
+    },
   ],
-  Challenges: [
+  "Challenges": [
     {
       title: "Weather App",
       imageUrl: "/assets/previews/challenges/weather-app-preview.jpg",
