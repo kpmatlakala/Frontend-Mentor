@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Load the local JetBrains Mono font */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Define your custom theme */
+@theme {
+  /* Font */
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Neutral colors */
+  --color-neutral-50: #FFFFFF;
+  --color-neutral-100: #C6C6C6;
+  --color-neutral-200: #9D9D9D;
+  --color-neutral-300: #454547;
+  --color-neutral-400: #3D3D3D;
+  --color-neutral-500: #2E2E2E;
+  --color-neutral-600: #202022;
+  --color-neutral-700: #171719;
+  --color-neutral-800: #101011;
+  --color-neutral-900: #0A0A0A;
+
+  /* Lime */
+  --color-lime-500: #CEF739;
+  --color-lime-800: #283300;
+
+  /* Green */
+  --color-green-500: #42EB05;
+
+  /* Red */
+  --color-red-500: #FF4141;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A0A;
+  font-family: 'JetBrains Mono', monospace;
+  color: #FFFFFF;
+}
