@@ -4,35 +4,32 @@ import CurrencyFlag from '../ui/icons/CurrencyFlag';
 import PinButton from '../ui/icons/PinButton';
 
 export default function CompareList() {
-  const fromCurrency = useFxStore(state => state.fromCurrency);
-  const amount = useFxStore(state => state.amount);
-  const rates = useFxStore(state => state.rates);
-  const favorites = useFxStore(state => state.favorites);
-  const toggleFavorite = useFxStore(state => state.toggleFavorite);
-  const availableCurrencies = useFxStore(state => state.availableCurrencies);
+  const fromCurrency = useFxStore((state) => state.fromCurrency);
+  const amount = useFxStore((state) => state.amount);
+  const allRates = useFxStore((state) => state.allRates);
+  const availableCurrencies = useFxStore((state) => state.availableCurrencies);
+  const favorites = useFxStore((state) => state.favorites);
+  const toggleFavorite = useFxStore((state) => state.toggleFavorite);
 
-  // Build currency list from availableCurrencies
-  const currencies = useMemo(() => {
+  // Build list of all currencies except base
+  const currencyList = useMemo(() => {
     if (!availableCurrencies) return [];
-    return Object.entries(availableCurrencies).map(([code, name]) => ({
-      code,
-      name,
-    }));
-  }, [availableCurrencies]);
+    return Object.keys(availableCurrencies)
+      .filter((code) => code !== fromCurrency)
+      .map((code) => ({
+        code,
+        name: availableCurrencies[code],
+      }));
+  }, [availableCurrencies, fromCurrency]);
 
-  // Filter out the base currency
-  const compareCurrencies = useMemo(() => {
-    return currencies.filter(c => c.code !== fromCurrency);
-  }, [currencies, fromCurrency]);
-
-  // Calculate converted amounts
+  // Build comparison data
   const comparisons = useMemo(() => {
-    return compareCurrencies.map(currency => {
-      const rate = rates?.[currency.code] || 0;
+    if (!allRates) return [];
+    return currencyList.map((currency) => {
+      const rate = allRates[currency.code] || 0;
       const converted = amount * rate;
       const pair = `${fromCurrency}/${currency.code}`;
       const isPinned = favorites.includes(pair);
-
       return {
         ...currency,
         rate,
@@ -41,7 +38,7 @@ export default function CompareList() {
         isPinned,
       };
     });
-  }, [compareCurrencies, fromCurrency, amount, rates, favorites]);
+  }, [currencyList, allRates, amount, fromCurrency, favorites]);
 
   const handleToggleFavorite = (pair) => {
     toggleFavorite(pair);
@@ -68,23 +65,22 @@ export default function CompareList() {
     );
   }
 
-  // No rates available yet
-  if (!rates || Object.keys(rates).length === 0) {
+  if (!allRates) {
     return (
       <div className="p-5 bg-neutral-700 rounded-2xl outline outline-1 outline-neutral-600">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-5">
           <div className="flex items-center gap-3">
             <span className="text-neutral-200 text-sm font-mono tracking-wide">MULTI-CURRENCY</span>
             <span className="text-neutral-50 text-base font-medium font-mono tracking-wide">
               {amount.toLocaleString()} FROM {fromCurrency}
             </span>
           </div>
-          <span className="opacity-70 text-neutral-50 text-xs font-mono tracking-wide">—</span>
+          <span className="opacity-70 text-neutral-50 text-xs font-mono tracking-wide">Loading...</span>
         </div>
         <div className="py-10 flex flex-col items-center gap-4">
-          <span className="text-neutral-100 text-xl font-mono">Loading rates...</span>
+          <span className="text-neutral-100 text-xl font-mono">Loading exchange rates...</span>
           <p className="text-center text-neutral-200 text-sm font-mono tracking-wide max-w-[508px]">
-            Fetching live exchange rates for {fromCurrency}.
+            Fetching live rates for all currencies.
           </p>
         </div>
       </div>
@@ -105,7 +101,7 @@ export default function CompareList() {
         </span>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 max-h-[600px] overflow-y-auto pr-2">
         {comparisons.map((item) => (
           <CompareRow
             key={item.code}

@@ -38,6 +38,7 @@ const useFxStore = create(
       lastFetched: null,
       historyData: null,
       lastFetchedRange: null,
+      allRates: null, // full object { quote: rate, ... } for all currencies
 
       // --- Async API Actions ---
 
@@ -61,6 +62,26 @@ const useFxStore = create(
         } catch (error) {
           console.error("❌ Currencies error:", error);
           set({ error: error.message });
+        }
+      },
+
+      fetchAllRates: async () => {
+        const { fromCurrency, isLoading } = get();
+        if (isLoading) return;
+        set({ isLoading: true, error: null });
+        try {
+          const response = await fetch(
+            `https://api.frankfurter.dev/v2/rates?base=${fromCurrency}`,
+          );
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          const ratesMap = {};
+          data.forEach((item) => {
+            ratesMap[item.quote] = item.rate;
+          });
+          set({ allRates: ratesMap, isLoading: false });
+        } catch (error) {
+          set({ error: error.message, isLoading: false });
         }
       },
 

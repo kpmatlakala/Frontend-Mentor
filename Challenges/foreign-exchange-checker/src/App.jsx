@@ -13,6 +13,9 @@ function App() {
   const fetchHistory = useFxStore((state) => state.fetchHistory);
   const activeTab = useFxStore((state) => state.activeTab);
   const chartRange = useFxStore((state) => state.chartRange);
+  const fetchAllRates = useFxStore((state) => state.fetchAllRates);
+  const fromCurrency = useFxStore((state) => state.fromCurrency);
+  const allRates = useFxStore((state) => state.allRates);
   const rates = useFxStore((state) => state.rates);
   const historyData = useFxStore((state) => state.historyData);
 
@@ -36,6 +39,12 @@ function App() {
     }, 60000);
     return () => clearInterval(interval);
   }, [refreshRatesIfStale]);
+
+  useEffect(() => {
+    if (activeTab === "compare" || activeTab === "favorites") {
+      fetchAllRates();
+    }
+  }, [activeTab, fromCurrency, fetchAllRates]);
 
   // Debug logs
   useEffect(() => {
