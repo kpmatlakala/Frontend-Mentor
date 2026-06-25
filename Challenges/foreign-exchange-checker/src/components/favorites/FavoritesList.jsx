@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import useFxStore from '../../store/useFxStore';
+import PinButton from '../ui/icons/PinButton';
 
 export default function FavoritesList() {
   const favorites = useFxStore(state => state.favorites);
@@ -8,22 +10,24 @@ export default function FavoritesList() {
   const setToCurrency = useFxStore(state => state.setToCurrency);
 
   // Build favorite items from stored pairs
-  const favoriteItems = favorites.map(pair => {
-    const [from, to] = pair.split('/');
-    const rate = rates?.[to] || 0;
-    // Mock 24h change – replace with actual data from API
-    const change = (Math.random() * 2 - 1) * 0.5; 
-    const isPositive = change >= 0;
-    
-    return {
-      pair,
-      from,
-      to,
-      rate,
-      change: isPositive ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`,
-      isPositive,
-    };
-  });
+  const favoriteItems = useMemo(() => {
+    return favorites.map(pair => {
+      const [from, to] = pair.split('/');
+      const rate = rates?.[to] || 0;
+      // Mock 24h change – we'll compute from history later
+      const change = (Math.random() * 2 - 1) * 0.5;
+      const isPositive = change >= 0;
+      
+      return {
+        pair,
+        from,
+        to,
+        rate,
+        change: isPositive ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`,
+        isPositive,
+      };
+    });
+  }, [favorites, rates]);
 
   const handleLoadPair = (from, to) => {
     setFromCurrency(from);
@@ -91,16 +95,7 @@ function FavoriteRow({ item, onLoad, onUnpin }) {
         </span>
       </div>
 
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onUnpin();
-        }}
-        className="w-8 h-8 p-2 rounded-lg outline outline-1 outline-lime-500 bg-neutral-600 flex items-center justify-center flex-shrink-0"
-        aria-label="Unpin pair"
-      >
-        <span className="w-3 h-3 text-lime-500 block" aria-hidden="true">★</span>
-      </button>
+      <PinButton isPinned={true} onClick={onUnpin} />
     </div>
   );
 }
