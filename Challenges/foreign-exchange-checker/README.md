@@ -102,8 +102,8 @@ Users should be able to:
 
 ## Links
 
-* **Solution URL:** https://www.frontendmentor.io/solutions/fx-checker-react-tailwind-zustand-
-* **Live Site:** https://your-live-site-url.com
+* **Solution URL:** https://www.frontendmentor.io/solutions/fx-checker-live-currency-dashboard-with-react-zustand-and-recharts-kGQIhfEcxZ
+* **Live Site:** https://foreign-exchange-checker-nine.vercel.app/
 
 ---
 
@@ -315,3 +315,9 @@ Their excellent tooling and documentation made building this project both enjoya
 ---
 
 Built with ❤️ during the **FM30 Hackathon**.
+
+I've just completed a front-end coding challenge from @frontendmentor! 🎉
+
+You can see my solution here: https://www.frontendmentor.io/solutions/fx-checker-live-currency-dashboard-with-react-zustand-and-recharts-kGQIhfEcxZ
+
+Any suggestions on how I can improve are welcome!

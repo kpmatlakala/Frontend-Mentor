@@ -294,9 +294,9 @@ const projectsData = {
         "Full-featured currency conversion dashboard with live rates, history chart, favorites, and conversion log.",
       technologies: ["React", "Tailwind", "Zustand", "Recharts"],
       level: 3,
-      demoUrl: "https://fx-checker.vercel.app/", // or your live URL
+      demoUrl: "https://foreign-exchange-checker-nine.vercel.app/", // or your live URL
       feSolutionLink: "https://www.frontendmentor.io/solutions/...",
-      gitRepoLink:"",
+      gitRepoLink:"https://github.com/kpmatlakala/Frontend-Mentor/tree/foreign-exchange-checker",
       isFeatured: true,
     },
     // {
