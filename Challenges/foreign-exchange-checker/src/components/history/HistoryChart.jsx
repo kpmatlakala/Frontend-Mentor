@@ -134,7 +134,7 @@ export default function HistoryChart() {
         </span>
       </div>
 
-      <div className="h-64 w-full">
+      <div className="w-full h-48 sm:h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={historyData}

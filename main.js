@@ -8,6 +8,7 @@
 //   initThemeToggle();
 //   initAccordion();
 //   renderProjects();
+
 // });
 
 

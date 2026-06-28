@@ -67,9 +67,9 @@ function App() {
     <div className="min-h-screen bg-neutral-900 text-neutral-50 font-mono">
       <Header />
       <Ticker />
-      <main className="max-w-[1080px] mx-auto px-8 py-12 flex flex-col gap-8">
+      <main className="max-w-[1080px] mx-auto p-4 sm:px-8 sm:py-12 flex flex-col gap-6 sm:gap-8">
         <Converter />
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-4 sm:gap-5">
           <Tabs />
           <TabPanels />
         </div>

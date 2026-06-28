@@ -116,7 +116,7 @@ export default function CompareList() {
 
 function CompareRow({ currency, onToggleFavorite }) {
   return (
-    <div className="w-full h-16 px-4 py-3 bg-neutral-600 rounded-[10px] outline outline-1 outline-neutral-500 flex items-center gap-5 hover:outline-neutral-400 transition-colors">
+    <div className="w-full h-auto sm:h-16 px-3 sm:px-4 py-2 sm:py-3 bg-neutral-600 rounded-[10px] outline outline-1 outline-neutral-500 flex items-center gap-5 hover:outline-neutral-400 transition-colors">
       <CurrencyFlag currencyCode={currency.code} className="w-6 h-6 flex-shrink-0" />
       
       <div className="flex-1 flex flex-col min-w-0">

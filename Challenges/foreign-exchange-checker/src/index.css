@@ -49,3 +49,20 @@ body {
   color: #FFFFFF;
 }
 
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-scroll {
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+

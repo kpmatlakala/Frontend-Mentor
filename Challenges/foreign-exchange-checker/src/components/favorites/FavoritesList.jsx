@@ -93,7 +93,7 @@ export default function FavoritesList() {
   }
 
   return (
-    <div className="p-5 bg-neutral-700 rounded-2xl outline outline-1 outline-neutral-600">
+    <div className="w-full h-auto sm:h-16 px-3 sm:px-4 py-2 sm:py-3 bg-neutral-700 rounded-2xl outline outline-1 outline-neutral-600">
       <div className="flex justify-between items-center mb-5">
         <span className="text-neutral-50 text-base font-medium font-mono tracking-wide">
           PINNED PAIRS
