@@ -1,42 +1,63 @@
 import { useState, useEffect, useRef } from "react";
 import useFxStore from "../../store/useFxStore";
-import CurrencyFlag from '../ui/icons/CurrencyFlag';
-import SearchIcon from '../ui/icons/SearchIcon';
-import ChevronDownIcon from '../ui/icons/ChevronDownIcon';
+import CurrencyFlag from "../ui/icons/CurrencyFlag";
+import SearchIcon from "../ui/icons/SearchIcon";
 
-// You'll import this from your API later
 const POPULAR_CURRENCIES = [
-  "USD",
-  "EUR",
-  "GBP",
-  "JPY",
-  "CHF",
-  "AUD",
-  "CAD",
-  "CNY",
+  "USD", "EUR", "GBP", "JPY", "CHF",
+  "AUD", "CAD", "CNY", "INR", "BRL",
 ];
 
-export default function CurrencyPicker({ context, onClose }) {
+export default function CurrencyPicker({
+  context,
+  onClose,
+  align = "left", // keep left by default
+}) {
   const [searchQuery, setSearchQuery] = useState("");
   const [currencies, setCurrencies] = useState([]);
   const searchInputRef = useRef(null);
+  const pickerRef = useRef(null);
 
-  // Get the currently selected currency for this context
   const fromCurrency = useFxStore((state) => state.fromCurrency);
   const toCurrency = useFxStore((state) => state.toCurrency);
   const setFromCurrency = useFxStore((state) => state.setFromCurrency);
   const setToCurrency = useFxStore((state) => state.setToCurrency);
+  const availableCurrencies = useFxStore((state) => state.availableCurrencies);
 
   const selectedCurrency = context === "send" ? fromCurrency : toCurrency;
 
-  // Focus search on mount
+  // Load currencies
+  useEffect(() => {
+    if (availableCurrencies && Object.keys(availableCurrencies).length > 0) {
+      const list = Object.entries(availableCurrencies).map(([code, name]) => ({
+        code,
+        name,
+      }));
+      setCurrencies(list);
+    } else {
+      // fallback
+      const fallback = [
+        { code: "USD", name: "US Dollar" },
+        { code: "EUR", name: "Euro" },
+        { code: "GBP", name: "British Pound" },
+        { code: "JPY", name: "Japanese Yen" },
+        { code: "CHF", name: "Swiss Franc" },
+        { code: "AUD", name: "Australian Dollar" },
+        { code: "CAD", name: "Canadian Dollar" },
+        { code: "CNY", name: "Chinese Yuan" },
+        { code: "INR", name: "Indian Rupee" },
+        { code: "BRL", name: "Brazilian Real" },
+      ];
+      setCurrencies(fallback);
+    }
+  }, [availableCurrencies]);
+
   useEffect(() => {
     if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, []);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -45,12 +66,16 @@ export default function CurrencyPicker({ context, onClose }) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  // Handle click outside (on backdrop)
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
 
-  // Handle currency selection
   const handleSelect = (currencyCode) => {
     if (context === "send") {
       setFromCurrency(currencyCode);
@@ -60,58 +85,28 @@ export default function CurrencyPicker({ context, onClose }) {
     onClose();
   };
 
-  // Filter currencies based on search
-  const filteredCurrencies = currencies.filter(
+  const filtered = currencies.filter(
     (c) =>
       c.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      c.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Split into popular and other
-  const popular = filteredCurrencies.filter((c) =>
-    POPULAR_CURRENCIES.includes(c.code),
-  );
-  const others = filteredCurrencies.filter(
-    (c) => !POPULAR_CURRENCIES.includes(c.code),
-  );
+  const popular = filtered.filter((c) => POPULAR_CURRENCIES.includes(c.code));
+  const others = filtered.filter((c) => !POPULAR_CURRENCIES.includes(c.code));
 
-  // Temporary mock data (replace with API fetch)
-  const mockCurrencies = [
-    { code: "USD", name: "US Dollar" },
-    { code: "EUR", name: "Euro" },
-    { code: "GBP", name: "British Pound" },
-    { code: "JPY", name: "Japanese Yen" },
-    { code: "CHF", name: "Swiss Franc" },
-    { code: "AUD", name: "Australian Dollar" },
-    { code: "CAD", name: "Canadian Dollar" },
-    { code: "CNY", name: "Chinese Yuan" },
-    { code: "INR", name: "Indian Rupee" },
-    { code: "BRL", name: "Brazilian Real" },
-    // ... add more from your Figma export
-  ];
-
-  useEffect(() => {
-    // Replace with actual API call
-    setCurrencies(mockCurrencies);
-  }, []);
+  // ✅ Always left‑aligned – use `left-0` regardless of `align`
+  const positionClass = align === "right" ? "right-0" : "left-0";
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-      onClick={handleBackdropClick}
+      ref={pickerRef}
+      className={`absolute z-50 top-full mt-2 w-80 bg-neutral-800 rounded-2xl shadow-2xl overflow-hidden ${positionClass}`}
     >
-      <div className="w-full max-w-[400px] max-h-[500px] bg-neutral-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-        
+      <div className="w-80 max-h-[400px] bg-neutral-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        {/* Search */}
         <div className="p-4 border-b border-neutral-700">
           <div className="relative">
-            {/* Search icon – if you have one */}
-            <span
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
-              aria-hidden="true"
-            >
-              🔍
-            </span>
-
+            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 w-4 h-4" />
             <input
               ref={searchInputRef}
               type="text"
@@ -129,9 +124,8 @@ export default function CurrencyPicker({ context, onClose }) {
           </div>
         </div>
 
-        {/* Currency Lists */}
+        {/* Lists */}
         <div className="flex-1 overflow-y-auto p-2 space-y-4">
-          {/* Popular Group */}
           {popular.length > 0 && (
             <div>
               <div className="flex justify-between px-3 py-1 text-xs text-neutral-400 font-mono">
@@ -151,7 +145,6 @@ export default function CurrencyPicker({ context, onClose }) {
             </div>
           )}
 
-          {/* Other Currencies Group */}
           {others.length > 0 && (
             <div>
               <div className="flex justify-between px-3 py-1 text-xs text-neutral-400 font-mono">
@@ -171,9 +164,8 @@ export default function CurrencyPicker({ context, onClose }) {
             </div>
           )}
 
-          {/* No results */}
-          {filteredCurrencies.length === 0 && (
-            <div className="py-8 text-center text-neutral-400 text-sm">
+          {filtered.length === 0 && (
+            <div className="py-8 text-center text-neutral-400 text-sm font-mono">
               No currencies found
             </div>
           )}
@@ -183,25 +175,24 @@ export default function CurrencyPicker({ context, onClose }) {
   );
 }
 
-// Currency Item Component
 function CurrencyItem({ currency, isSelected, onSelect }) {
   return (
-    <li 
+    <li
       className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors ${
-        isSelected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
+        isSelected ? "bg-neutral-700" : "hover:bg-neutral-700"
       }`}
       onClick={onSelect}
       role="option"
       aria-selected={isSelected}
     >
-      <CurrencyFlag currencyCode={currency.code} className="w-6 h-6" />
+      <CurrencyFlag currencyCode={currency.code} className="w-6 h-6 flex-shrink-0" />
       <span className="text-neutral-50 text-sm font-mono">{currency.code}</span>
-      <span className="text-neutral-400 text-sm font-mono flex-1">{currency.name}</span>
+      <span className="text-neutral-400 text-sm font-mono flex-1 truncate">{currency.name}</span>
       {isSelected && (
-        <img 
-          src="/assets/images/icon-check.svg" 
-          alt="" 
-          className="w-4 h-4 text-lime-500" 
+        <img
+          src="/assets/images/icon-check.svg"
+          alt=""
+          className="w-4 h-4"
           aria-hidden="true"
         />
       )}

@@ -106,14 +106,28 @@ const projectsData = {
     {
       title: "Article Preview Component",
       imageUrl: "/assets/previews/js-fundamentals/article-preview.jpg",
-      description: "Article preview component with hover effects and image overlay.",
+      description:
+        "Article preview component with hover effects and image overlay.",
       technologies: ["HTML", "CSS", "JavaScript"],
       level: 1,
-      demoUrl: "/JavaScript_Fundamentals/article-preview-component/",
+      demoUrl: "/Javascript_Fundamentals/article-preview-component/",
       feSolutionLink:
-        "https://www.frontendmentor.io/solutions/article-preview-component-using-html-and-css-and-js-D7P-o6wK26",
+        "https://www.frontendmentor.io/solutions/article-preview-component-using-html-css-and-javascript-yU449JlsvU",
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/article-preview-component",
+    },
+    {
+      title: "Newsletter Sign-up",
+      imageUrl: "/assets/previews/js-fundamentals/newsletter-preview.jpg",
+      description: "Newsletter Sign-up with success message.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      level: 1,
+      demoUrl:
+        "/Javascript_Fundamentals/newsletter-sign-up-with-success-message/",
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/newsletter-sign-up-with-success-message-",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/newsletter-sign-up-with-success-message",
     },
   ],
   Challenges: [
@@ -135,7 +149,8 @@ const projectsData = {
     {
       title: "Typing Speed Test",
       imageUrl: "/assets/previews/challenges/typing-speed-test-preview.jpg",
-      description: "A typing speed test  that calculates words per minute (WPM) and accuracy. A fun project to practice DOM manipulation and working with timers.",
+      description:
+        "A typing speed test  that calculates words per minute (WPM) and accuracy. A fun project to practice DOM manipulation and working with timers.",
       technologies: ["HTML", "CSS", "JavaScript"],
       level: 2,
       demoUrl: "/Challenges/typing-speed-test/",
@@ -236,7 +251,6 @@ const projectsData = {
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/results-summary-component",
-      
     },
     {
       title: "Order Summary Component",
@@ -248,17 +262,42 @@ const projectsData = {
       //  feSolutionLink: 'https://www.frontendmentor.io/solutions/',
       gitRepoLink:
         "https://github.com/kpmatlakala/Frontend-Mentor/tree/order-summary-component",
-
     },
     {
-      title: 'Profile Card Component',
-      imageUrl: '/assets/previews/challenges/profile-card-component',
-      description: 'Profile card component ',
-      technologies: ['HTML', 'CSS'],
+      title: "Profile Card Component",
+      imageUrl: "/assets/previews/challenges/profile-card-preview.jpg",
+      description: "Profile card component ",
+      technologies: ["HTML", "CSS"],
       level: 1,
-      demoUrl: '/Challenges/profile-card-component/',
-      feSolutionLink: 'https://www.frontendmentor.io/solutions/profile-card-component-using-html-and-css-rALr5ajb5Y',
-      gitRepoLink: 'https://github.com/kpmatlakala/Frontend-Mentor/tree/profile-card-component'
+      demoUrl: "/Challenges/profile-card-component/",
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/profile-card-component-using-html-and-css-rALr5ajb5Y",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/profile-card-component",
+    },
+    {
+      title: "Single price grid component",
+      imageUrl: "/assets/previews/challenges/single-price-preview.jpg",
+      description: "Single price grid component",
+      technologies: ["HTML", "CSS"],
+      level: 1,
+      demoUrl: "/Challenges/single-price-grid-component/",
+      feSolutionLink:
+        "https://www.frontendmentor.io/solutions/single-price-grid-component-IaMx0Vkmk2",
+      gitRepoLink:
+        "https://github.com/kpmatlakala/Frontend-Mentor/tree/single-price-grid-component",
+    },
+    {
+      title: "FX Checker (React)",
+      imageUrl: "/assets/previews/fx-checker-preview.jpg",
+      description:
+        "Full-featured currency conversion dashboard with live rates, history chart, favorites, and conversion log.",
+      technologies: ["React", "Tailwind", "Zustand", "Recharts"],
+      level: 3,
+      demoUrl: "https://fx-checker.vercel.app/", // or your live URL
+      feSolutionLink: "https://www.frontendmentor.io/solutions/...",
+      gitRepoLink:"",
+      isFeatured: true,
     },
     // {
     //   title: 'Intro Component with Signup Page',
