@@ -1,189 +1,323 @@
-# Frontend Mentor - FX Checker
+# Frontend Mentor - FX Checker Solution
+![Preview](./preview.jpg)
+This is my solution to the **FX Checker** challenge on Frontend Mentor. These challenges are a great way to improve front-end development skills by building realistic applications.
 
-![Design preview for the FX Checker coding challenge](./preview.jpg)
+---
 
-## Welcome! 👋
+## Table of Contents
 
-This challenge is part of the **Frontend Mentor 30-Day Hackathon**, so for the next 30 days it's free for everyone, including free access to the Figma design file. [Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects, and this one makes a great portfolio piece.
+* [Overview](#overview)
 
-**To do this challenge, you need a good understanding of HTML, CSS, and JavaScript, plus some experience working with a REST API.**
+  * [The Challenge](#the-challenge)
+  * [Screenshot](#screenshot)
+  * [Links](#links)
+* [My Process](#my-process)
 
-## 🏆 FM30 Hackathon
+  * [Built With](#built-with)
+  * [What I Learned](#what-i-learned)
+  * [Continued Development](#continued-development)
+  * [Useful Resources](#useful-resources)
+  * [AI Collaboration](#ai-collaboration)
+* [Author](#author)
+* [Acknowledgments](#acknowledgments)
 
-For the 30 days of the hackathon, FX Checker is **free+**: the starter code and the Figma design are free for everyone. After the hackathon it becomes a premium challenge.
+---
 
-- **Submit your entry** by posting your solution on the Frontend Mentor platform, then sharing your solution-page link in the **#hackathon-submissions** channel on our [Discord community](https://www.frontendmentor.io/community), in the FX Checker thread.
-- **Every entry needs a complete README** (the `README-template.md` in this starter is a good base) to count as a valid submission.
-- **Prizes:** 1st place gets a one-year Pro subscription, 2nd and 3rd each get a one-month Pro subscription.
-- Share your progress as you build with the **#FM30Hackathon** hashtag. We'll be watching and resharing our favorites.
+# Overview
 
-[Read the full hackathon rules, dates, and judging details here](https://www.frontendmentor.io/articles/fm30-hackathon-currency-converter).
+## The Challenge
 
-## The challenge
+Users should be able to:
 
-Your challenge is to build out this FX Checker currency app and get it looking as close to the design as possible.
+### 💱 Converter
 
-The app converts between currencies using live exchange rates, with a rate-history chart, a multi-currency comparison, pinned favorite pairs, and a running log of conversions. You can use any tools you like, so if there's something you've been wanting to practice, give it a go.
+* Enter an amount to send and see it convert in real time as they type.
+* Select both the **send** and **receive** currencies from a searchable currency picker.
+* View the live exchange rate for the active currency pair.
+* Swap the selected currencies with a single click.
+* Favorite the active currency pair.
+* Log every completed conversion to a conversion history.
 
-Your users should be able to:
+### 🌍 Currency Picker
 
-### Converter
+* Search currencies by code or name.
+* Browse currencies grouped into **Popular** and **Other Currencies**.
+* View each currency's flag, code, and full name.
+* See which currency is currently selected.
 
-- Enter an amount to send and see it convert in real time as they type
-- Pick the "send" and "receive" currencies from a searchable currency picker
-- See the live exchange rate for the active pair (for example, `1 USD = 0.8530 EUR`)
-- Swap the send and receive currencies with the swap button
-- Favorite the active pair, and log a conversion to their history
+### 📈 Live Markets
 
-### Currency picker
+* View a scrolling ticker of major currency pairs.
+* See live exchange rates and 24-hour market movement.
 
-- Search the full list of available currencies by code or name
-- See currencies grouped into "Popular" and "Other currencies", each row showing the flag, code, and name
-- See a check against the currency that's currently selected
+### 📊 Rate History
 
-### Live markets ticker
+* Display historical exchange rates using a responsive line and area chart.
+* Switch between:
 
-- See a ticker of currency pairs, each with its current rate and 24-hour change (up or down)
+  * 1D
+  * 1W
+  * 1M
+  * 3M
+  * 1Y
+  * 5Y
+* View:
 
-### Rate history
+  * Open
+  * Last
+  * Absolute Change
+  * Percentage Change
 
-- View a line and area chart of the active pair's rate over time
-- Switch the chart range between 1D, 1W, 1M, 3M, 1Y, and 5Y
-- See the open, last, absolute change, and percentage change for the selected range
+### 🌐 Compare
 
-### Compare
+* Compare the converted amount against multiple currencies simultaneously.
+* Pin or unpin comparison rows.
 
-- See their send amount converted into a range of other currencies at once, each with its reference rate
-- Pin or unpin any comparison row to their favorites
+### ⭐ Favorites
 
-### Favorites
+* Save favorite currency pairs.
+* View live rates and daily change.
+* Reload any favorite pair into the converter.
+* Remove favorites.
 
-- See their pinned pairs, each with its live rate and 24-hour change
-- Load a pinned pair back into the converter by selecting its row
-- Unpin a pair they no longer want to track
+### 📝 Conversion Log
 
-### Conversion log
+* View every conversion with:
 
-- See a log of conversions they've made, each showing the relative time, the pair, and the send and receive amounts
-- Clear the whole log
-- Delete an individual entry
+  * Relative timestamp
+  * Currency pair
+  * Sent amount
+  * Received amount
+* Delete individual entries.
+* Clear the entire history.
 
-### UI & accessibility
+### ♿ Accessibility
 
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
-- Navigate the entire app using only their keyboard
+* Fully responsive across mobile, tablet, and desktop.
+* Hover and focus states for all interactive elements.
+* Complete keyboard navigation.
+* Accessible custom controls and dropdowns.
 
-### Data
+---
 
-There's no data file for this challenge. The exchange rates come from a live API, and the user's own data (favorites and conversion log) is saved in the browser.
+## Links
 
-We recommend the [Frankfurter API](https://frankfurter.dev/) for the rates. It's free, needs no API key, has no rate limits, is CORS-enabled, and is backed by the European Central Bank. A few endpoints cover everything in the design:
+* **Solution URL:** https://www.frontendmentor.io/solutions/fx-checker-live-currency-dashboard-with-react-zustand-and-recharts-kGQIhfEcxZ
+* **Live Site:** https://foreign-exchange-checker-nine.vercel.app/
 
-- `GET /v2/currencies` to populate the currency picker
-- `GET /v2/latest?base=USD` for the converter, ticker, and comparison rates
-- `GET /v2/latest?base=USD&symbols=EUR` for a lighter single-pair lookup
-- `GET /v2/{start}..{end}?base=USD&symbols=EUR` for the rate-history time series
+---
 
-You're free to use a different exchange-rate API if you prefer. Just note that the history chart needs time-series data, so check your chosen API supports it.
+# My Process
 
-### Saving favorites and the conversion log
+## Built With
 
-A user's pinned pairs and their conversion log should persist across browser sessions. When they pin a pair or log a conversion, that change should still be there when they close and reopen the app. `localStorage` is a natural fit, since this app doesn't need user accounts. It's also a nice touch to remember the last tab they had open.
+* Semantic HTML5
+* Tailwind CSS v4
+* CSS Flexbox
+* CSS Grid
+* Mobile-first workflow
+* React
+* Vite
+* Zustand
+* Recharts
+* Frankfurter API
+* JetBrains Mono
 
-### States to handle
+---
 
-- **Empty favorites:** when nothing is pinned yet, show the prompt to pin a pair rather than an empty list
-- **Empty log:** when no conversions have been logged, show the prompt explaining that conversions are recorded automatically
-- **Empty comparison:** when the send amount is empty, prompt the user to enter an amount
-- **Chart error:** if the rate history can't load, show a friendly message rather than a broken chart
+# What I Learned
 
-### Accessibility
+Building this dashboard reinforced several important concepts while also introducing a few new ones.
 
-- Make sure keyboard navigation works for all interactive elements, including the currency pickers, the swap button, the tabs, the chart range controls, and the favorite and pin toggles
-- Provide visible focus styles. Dark interfaces hide weak focus rings, so these matter more than usual here
-- Use appropriate semantic HTML for the tabs, the lists of currencies and conversions, and the currency picker popover
-- Announce dynamic changes to screen readers, such as the converted amount updating, a pair being pinned, or a conversion being logged
+## State Management with Zustand
 
-### Ideas to test yourself
+Managing application-wide state became significantly simpler with Zustand and its `persist` middleware.
 
-- Add a light theme so users can switch between the dark-first design and a light alternative
-- Persist the active currency pair in the URL so a conversion can be bookmarked or shared
-- Add keyboard shortcuts so power users can focus the search, swap currencies, and switch the chart range without the mouse
-- Export the conversion log as a CSV file
-- Add a hover crosshair to the rate chart that shows the exact date and rate under the cursor
-- Cache the last successful rates and fall back to them with an out-of-date banner when the API is unreachable
-- Build as a full-stack app with accounts so a user's favorites and conversion log sync across devices
+```js
+const useFxStore = create(
+  persist(
+    (set) => ({
+      amount: 1000,
+      fromCurrency: "USD",
+      toCurrency: "EUR",
+      favorites: [],
+      conversionLog: [],
+    }),
+    {
+      name: "fx-checker-storage",
+    }
+  )
+);
+```
 
-### Want some support on the challenge?
+---
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+## Responsive Layouts
 
-## Where to find everything
+Tailwind's responsive utilities made it easy to build layouts that adapt cleanly across screen sizes.
 
-Your task is to build out the project to the Figma design file provided. During the hackathon, you can download the design for free on the platform. The design download comes with a `README.md` file to help you get set up. There are a couple of `.gitignore` files in this starter to keep the design files out of your repo, so please leave them in place.
+```jsx
+<div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+  <div className="w-full sm:flex-1">
+    <SendBox />
+  </div>
 
-All the required assets for this project are in the `/assets` folder. The icons and flags are already exported and optimized, and the logo is provided as an SVG. We also include the variable font file for JetBrains Mono. You can either link to Google Fonts or use the local font file to host the font yourself.
+  <SwapButton />
 
-The design system in the design file has all the details on the colors, fonts, spacing, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+  <div className="w-full sm:flex-1">
+    <ReceiveBox />
+  </div>
+</div>
+```
 
-The starter `index.html` already contains the static written content from the design, with comments marking where the dynamic, data-driven content goes. Building the HTML structure around it is part of the challenge.
+---
 
-## Using AI coding assistants
+## API Integration & Error Handling
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+Fetching live exchange rates required careful handling of loading, retries, and failed requests.
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+```js
+fetchRates: async () => {
+  set({ isLoading: true, error: null });
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+  try {
+    const response = await fetch(
+      `https://api.frankfurter.dev/v2/rates?base=${fromCurrency}`
+    );
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+    // Update state...
+  } catch (error) {
+    set({
+      error: error.message,
+      isLoading: false,
+    });
+  }
+};
+```
 
-## Building your project
+---
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+## Accessible Custom Dropdown
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub.**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+The searchable currency picker was one of the more interesting components to build. It supports:
 
-## Deploying your project
+* Keyboard navigation
+* Search filtering
+* Focus management
+* Current selection indicators
+* Fully accessible interactions
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+---
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+## Data Visualization
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+Using Recharts made it straightforward to build a responsive historical exchange-rate chart with gradient fills and custom tooltips.
 
-## Submitting your hackathon entry
+```jsx
+<AreaChart data={historyData}>
+  <defs>
+    <linearGradient id="limeGradient">
+      <stop offset="5%" stopColor="#CEF739" stopOpacity={0.4} />
+      <stop offset="95%" stopColor="#CEF739" stopOpacity={0} />
+    </linearGradient>
+  </defs>
 
-To enter, there are two steps:
+  <Area
+    type="monotone"
+    dataKey="rate"
+    stroke="#CEF739"
+    fill="url(#limeGradient)"
+  />
+</AreaChart>
+```
 
-1. **Submit your solution on the Frontend Mentor platform.** This is required. It creates your solution page, with your live site and a link to your GitHub repo. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) if you need a hand.
-2. **Share your solution-page URL** in the **#hackathon-submissions** channel on our [Discord community](https://www.frontendmentor.io/community), in the FX Checker thread. That link is your entry, since it points to both your live demo and your repo.
+---
 
-Make sure your repo includes a complete README so the team and the community can understand what you built.
+## Persisting Data
 
-If you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+Favorites and conversion history are automatically saved using localStorage through Zustand's persistence middleware, allowing the app to retain state across browser refreshes.
 
-## Sharing your solution
+---
 
-There are multiple places you can share your solution:
+# Continued Development
 
-1. Share your progress and your finished project with the **#FM30Hackathon** hashtag so we can find it and reshare our favorites.
-2. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community).
-3. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-4. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-5. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+Some features I'd like to explore next include:
 
-## Got feedback for us?
+* Accurate 24-hour market changes using historical API data
+* Light mode alongside the existing dark theme
+* Keyboard shortcuts (e.g. <kbd>Ctrl/Cmd + K</kbd>)
+* CSV export for the conversion history
+* URL-based currency pair sharing
+* User authentication with cloud-synced favorites and history
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+---
 
-**Have fun building, and good luck in the hackathon!** 🚀
+# Useful Resources
+
+* Frankfurter API Documentation
+* Zustand Documentation
+* Recharts Documentation
+* Tailwind CSS Documentation
+* JetBrains Mono
+
+---
+
+# AI Collaboration
+
+I used **Claude (Web)** as a development assistant throughout this project.
+
+It helped with:
+
+* Discussing application architecture
+* Evaluating React, Vite, and Zustand
+* Scaffolding components
+* Debugging API integration
+* Improving responsive layouts
+* Reviewing accessibility
+* Refactoring components
+* Suggesting performance improvements
+
+### What Worked Well
+
+Claude was especially useful for brainstorming multiple implementation approaches rather than prescribing a single solution. This made it easier to evaluate trade-offs and choose the approach that best fit the project.
+
+Its assistance during debugging was particularly valuable when working through API integration issues and responsive layout edge cases.
+
+### Challenges
+
+At times, suggested solutions were more complex than necessary. Simplifying those implementations ultimately resulted in cleaner, more maintainable code.
+
+---
+
+# Author
+
+* Website — Kabelo P. Matlakala
+* Frontend Mentor — @kpmatlakala
+* Github - @kpmatlakala
+
+---
+
+# Acknowledgments
+
+A huge thanks to the **Frontend Mentor** community for creating another excellent challenge.
+
+Special thanks to the teams behind:
+
+* React
+* Vite
+* Zustand
+* Tailwind CSS
+* Recharts
+* Frankfurter API
+
+Their excellent tooling and documentation made building this project both enjoyable and educational.
+
+---
+
+Built with ❤️ during the **FM30 Hackathon**.
+
+I've just completed a front-end coding challenge from @frontendmentor! 🎉
+
+You can see my solution here: https://www.frontendmentor.io/solutions/fx-checker-live-currency-dashboard-with-react-zustand-and-recharts-kGQIhfEcxZ
+
+Any suggestions on how I can improve are welcome!

@@ -21,7 +21,7 @@ export default function RangeSelector() {
           <button
             key={range.value}
             onClick={() => setChartRange(range.value)}
-            className={`px-4 py-3 rounded-[44px] text-xs font-mono leading-4 tracking-wide transition-colors focus:ring-2 focus:ring-lime-500 ${
+            className={`px-4 py-3 rounded-[16px] text-xs font-mono leading-4 tracking-wide transition-colors focus:ring-2 focus:ring-lime-500 ${
               isActive 
                 ? 'bg-neutral-500 text-neutral-50' 
                 : 'text-neutral-200 hover:bg-neutral-600'
